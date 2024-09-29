@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://rafiqaneh.ir",
+    "targetDev": "http://127.0.0.1:8081",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

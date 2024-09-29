@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+      <h1>پنل مدیریت استان {{provinceTilte}}</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" [routerLink]="'users'"> کاربران استان</a>
+      </div>
+    </mat-toolbar-row>
+    <!-- <mat-toolbar-row>
+        <span style="font-size: 12px;">SimpleCRM helps you easily manage your contacts</span>
+      </mat-toolbar-row> -->
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav>
+      <mat-nav-list class="flex flex-col">
+        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold mx-2 py-2 px-4 rounded" [routerLink]="'/'"> صفحه اصلی </a>
+        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold mx-2 py-2 px-4 rounded" [routerLink]="'users'"> کاربران استان</a>
+        <a mat-list-item (click)="sidenav.toggle()" mat-list-item>بستن منو</a>
+  
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

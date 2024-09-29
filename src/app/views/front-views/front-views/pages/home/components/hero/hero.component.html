@@ -1,0 +1,517 @@
+<section class="bg-[#FDF8F1] pt-2">
+    <audio id="player" src="assets/new-voices/rafiqaneh-background.mp3" autoplay></audio>
+    <div class="w-fit mr-5 pl-1.5 flex gap-0.5 text-xs rounded-full items-center bg-fardamoonPrimary bg-opacity-25">
+        <button class="w-9 cursor-pointer" *ngIf="showAudio" onclick="document.getElementById('player').pause()"
+            (click)="onShow()">
+            <img src="assets/fardamoon-event/audio.png" alt="">
+        </button>
+        <p *ngIf="showAudio" class="">برای قطع کردن موسیقی ضربه بزنید.</p>
+        <button class="w-9 cursor-pointer" *ngIf="!showAudio" onclick="document.getElementById('player').play()"
+            (click)="onShow()">
+            <img src="assets/fardamoon-event/no-audio.png" alt="">
+        </button>
+        <p *ngIf="!showAudio" class="">برای پخش کردن موسیقی ضربه بزنید.</p>
+
+    </div>
+    <div
+        class="max-w-screen-2xl xl:container xl:mx-auto grid grid-cols-12 items-center gap-x-0 lg:gap-x-8 gap-y-8 lg:gap-y-0 py-8  px-5 lg:px-4">
+        <!-- right -->
+        <div class="relative col-span-12 lg:col-span-7 flex flex-col gap-y-8">
+            <!-- title - content -->
+            <div class="flex flex-col gap-y-1 text-base md:text-lg">
+                <!-- title -->
+                <p class="">
+                    اینجا
+                    <span class="text-[#EB9550] font-blackYekan">
+                        رفیقانه
+                    </span>
+                    است
+                </p>
+                <p>
+                    جایی برای پرسه های لطیفِ باهم بودن
+                </p>
+                <p>
+                    برای همدم بودن ... برای دوستی های از ته دل ...
+                </p>
+                <p>
+                    ما اینجا دوس داریم که در کنار همدیگه
+                    <span routerLink="/fardamoon/space" class="text-newPrimary font-blackYekan">
+                        فردامون
+                    </span>
+                    رو بسازیم
+                </p>
+                <p>
+                    و بتونیم باهم دیگه پله های ترقی رو طی کنیم
+                </p>
+                <p>
+                    پس هرچه زودتر کوله بارت رو بردارو دوستات رو صدا بزن
+                </p>
+                <p>
+                    چون اینجا قراره در کنار هم کلی ماجرا جویی های جالب داشته باشیم
+                </p>
+
+            </div>
+            <!-- button -->
+            <div class="flex items-center justify-end gap-x-6">
+                <app-button title="ورود به سرزمین فردامون" routerLink="fardamoon/space"
+                    buttonClass="btn btn-primary btn-md"></app-button>
+            </div>
+            <!-- dynamicInfo && bestUsers  -->
+            <div class="data-stats flex items-center justify-center  lg:justify-start gap-x-7 selfe-center">
+                <!--  best -->
+                <!--  dynamic info -->
+                <div
+                    class="dynamicInfo relative w-fit flex flex-col rounded bg-surface border border-surfaceBorder mt-10">
+                    <!-- header -->
+                    <div
+                        class="absolute -top-4 right-4 group w-fit flex items-center py-1 px-2 bg-white hover:bg-newPrimary border   border-surfaceBorder rounded cursor-pointer">
+                        <div
+                            class="w-4 h-4 bg-newPrimary bg-opacity-40 rounded-full flex flex-col items-center justify-center ml-1">
+                            <div class="animate-pingDelay w-2 h-2 bg-newPrimary rounded-full"></div>
+                        </div>
+                        <h2 class="text-sm font-sansbold text-neutrals100 group-hover:text-white">
+                            جمع رفیقانه ای ها
+                        </h2>
+                    </div>
+                    <!-- info -->
+                    <div
+                        class="info-card flex flex-row-reverse items-center mt-6 justify-center py-2 divide-x-2 divide-newPrimary divide-dashed">
+                        <!-- 1 -->
+                        <div class="flex flex-col items-center justify-center gap-y-2 px-3 ">
+                            <p class="text-3xl text-neutrals100">
+                                {{ homeStats?.fardamoon ?? "-" }}
+                            </p>
+                            <p class="text-xs text-center text-neutrals0">
+                                فردامون
+                            </p>
+                        </div>
+                        <!-- 2 -->
+                        <div class="flex flex-col items-center justify-center gap-y-2 px-3 ">
+                            <p class="text-3xl text-neutrals100">
+                                {{ homeStats?.nahalDoosti ?? "-" }}
+                            </p>
+                            <p class="text-xs text-center text-neutrals0">
+                                نهال دوستی
+                            </p>
+                        </div>
+                        <!-- 3 -->
+                        <div class="flex flex-col items-center justify-center gap-y-2 px-3 ">
+                            <p class="text-3xl text-neutrals100">
+                                {{ homeStats?.users ?? "-" }}
+                            </p>
+                            <p class="text-xs text-center text-neutrals0">
+                                تعداد ثبت نامی
+                            </p>
+                        </div>
+                    </div>
+                    <img src="assets/icons/stamp.png" alt="heart-stamp" class="absolute -left-4 -top-5 w-14" />
+                </div>
+            </div>
+            <!-- extraInfo -->
+            <!-- <div class="flex flex-wrap lg:flex-col gap-2">
+        <p *ngFor="let item of extraInfo"
+          class="flex items-center gap-x-1 md:gap-x-2 text-xs md:text-sm lg:text-base text-neutrals100">
+          <img src="assets/images/goals.png" class="w-7" alt="goals">
+          {{item.title}}
+        </p>
+      </div> -->
+        </div>
+        <!-- left -->
+        <div class="h-full col-span-12 lg:col-span-5 order-first lg:order-last items-center flex flex-col">
+            <!-- <app-custom-carousel class="flex flex-col items-center" [carouselItems]="carouselItems" [indicators]="true"
+        [controls]="false" [autoSlide]="true" [slideInterval]="4000"></app-custom-carousel> -->
+            <div class="w-full sm:w-3/5 lg:w-4/5 self-center">
+
+                <!-- insta card -->
+                <div class="flex flex-col px-4 py-2 bg-white shadow-sm rounded-md border border-surfaceBorder">
+                    <!-- header -->
+                    <div class="flex items-center justify-between">
+                        <!--  moreButton -->
+                        <img src="assets/icons/more.png" class="w-4" />
+                        <!--  logo / name && Location -->
+                        <div class="flex flex-row-reverse items-center flex-1">
+                            <!--  logo -->
+                            <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full p-0.5">
+                                <img src="assets/images/rafiqaneh.jpg"
+                                    class="rounded-full w-16 h-16 border-2 border-white" />
+                            </div>
+
+                            <!--   name && Location -->
+                            <div class="flex flex-col items-center ml-2">
+                                <p class="text-sm">rafiqaneh</p>
+                                <span class="text-[10px]">Tehran, Iran</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- featuredImage -->
+                    <app-custom-carousel class="flex flex-col items-center my-3" [carouselItems]="carouselItems"
+                        [indicators]="true" [controls]="false" [autoSlide]="true"
+                        [slideInterval]="4000"></app-custom-carousel>
+                    <!-- <img src="assets/images/rafiqaneh-main-poster.jpg" class="w-full flex-shrink-0 my-3" /> -->
+                    <!--  heart / commnet / share / bookmark -->
+                    <div class="w-full flex items-center justify-between px-1">
+                        <!--  rightSide bookmark -->
+                        <div class="flex  items-center gap-x-2">
+                            <img src="assets/icons/saved-bookmark.png" class="w-6" />
+                        </div>
+                        <!--  leftSide heart / commnet / share -->
+                        <div class="flex  items-center gap-x-2">
+                            <img src="assets/icons/share.png" class="w-6" />
+                            <img src="assets/icons/comment.png" class="w-7" />
+                            <img src="assets/icons/heart.png" class="w-8" />
+                        </div>
+                    </div>
+                    <!--  likes -->
+                    <div class="ltr px-1 mt-3 ml-1.5">
+                        <p class="text-sm text-[#262626]">
+                            5,144
+                            <span>likes</span>
+                        </p>
+                    </div>
+                    <!--  instagramId -->
+                    <div class="flex items-center justify-end md:px-1 mt-1 ml-1.5">
+                        <img src="assets/icons/like-emoji.png" class="w-4 mx-0.5" />
+                        <p class="text-xs text-[#262626]">رفیقانه؛</p>
+                        <img src="assets/icons/like-emoji.png" class="w-4 mx-0.5" />
+                        <p class="flex text-xs text-[#262626]">فرصت دوستی رشد آفرین</p>
+                        <img src="assets/icons/red-flower.png" class="w-5" />
+                        <p class="text-sm text-[#262626]">rafiqaneh</p>
+                    </div>
+                    <!--  viewAllComments -->
+                    <div class="flex items-center justify-end px-1 mt-1 ml-1.5">
+                        <p class="text-xs text-[#8e8e8e]">view all 75 comments</p>
+                    </div>
+                    <!--  viewAllComments -->
+                    <div class="flex items-center justify-start px-1 mt-1 ml-1.5 ltr">
+                        <p class="text-[10px] text-[#8e8e8e]">7 days ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- svg divider  -->
+
+<span class="grid" style="--curveColor:red;--strokeColor:blue;background-color:#FDF8F1"><svg width="1001" height="111"
+        fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1001 111" preserveAspectRatio="none"
+        class="col-span-12 col-start-1 row-start-1 h-full w-full self-end -mb-1 max-h-24 md:max-h-36">
+        <path
+            d="M407.21 15.8956C537.851 42.4389 599.349 76.6302 838.741 93.501C917.226 99.032 967.922 93.2301 1001 81.1469L1001 111H0V21.5267C98.1188 10.501 242.474 -17.575 407.21 15.8956Z"
+            style="fill:white"></path>
+    </svg><svg class="col-span-12 col-start-1 row-start-1 h-full w-full self-end max-h-32 md:max-h-44"
+        preserveAspectRatio="none" viewBox="0 0 1003 143" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M1002 114.237C968.911 126.309 918.6 146.592 840.089 141.066C600.613 124.211 539.244 38.2043 408.557 11.6857C243.764 -21.754 98.2857 30.6679 1.00002 67.6339"
+            style="stroke:#F4D4AA" vector-effect="non-scaling-stroke" x="0" y="0" width="100" height="100" fill="none"
+            stroke-linecap="square" stroke-width="1" stroke-miterlimit="30"></path>
+    </svg></span>
+
+<!--  featured  list -->
+
+<!-- <section *ngIf="isAdmin"
+    class="max-w-screen-2xl xl:container xl:mx-auto grid grid-cols-12 items-center gap-y-12 py-8  px-6 lg:px-4">
+    <div class="col-span-12 flex flex-col gap-y-8 justify-center items-center">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl text-center font-boldYekan">
+            یک هدینگ جذاب برای
+            <br>
+            سکشن نماش لیست برترین ها
+        </h2>
+        <p class="w-full md:w-3/4 text-base text-right md:text-center text-neutrals100">
+            اینجا باید یک هدینگ بنویسیم و توضیح بدیم به کاربران که کارهایی که برای ما ارسال میکنند رو ما در سایت نمایش
+            میدیم
+            اگر ارسالی هاشون کیفیتش خوب باشد با این هدف که کاربران انگیزه ی بیشتری برای شرکت در پویش ها داشته باشند.
+        </p>
+    </div>
+    
+    <div class="col-span-12 post-list-carousel-container relative overflow-hidden h-[385px]">
+        <div class="w-full grid grid-flow-col auto-cols-[85%] sm:auto-cols-[50%]    lg:auto-cols-[33%]">
+
+            <div
+                class="customDirectiveItem relative flex flex-col justify-between border border-surfaceBorder mx-[3%] bg-surface">
+                <app-button title="{{'#' + 'اسم پویش'}}" hrefLink="#" routerLink="#"
+                    buttonClass="btn bg-surface text-newPrimary btn-sm  absolute top-2 left-2"></app-button>
+                <img src="assets/images/rafiqaneh-main-poster.jpg" class="w-full max-h-52 object-cover"
+                    alt="featured-image" />
+                <div class="flex-1 flex flex-col justify-between my-2 px-3">
+                    <a class="cursor-pointer">
+                        <h2 class="text-sm lg:text-base text-neutrals100">عنوان پست اول اینجا قرار میگیره
+                        </h2>
+                    </a>
+                    <hr class="my-3 border border-gray-100">
+                    <app-button title="نام و نام خانوادگی کاربر" hrefLink="#" routerLink="#"
+                        buttonClass="flex flex-row-reverse gap-x-1 items-center text-xs font-lightYekan hover:font-boldYekan"
+                        icon="assets/images/user.png" iconClass="w-7"></app-button>
+                </div>
+            </div>
+
+            <div
+                class="customDirectiveItem relative flex flex-col justify-between border border-surfaceBorder mx-[3%] bg-surface">
+                <app-button title="{{'#' + 'چالش نهال دوستی'}}" hrefLink="#" routerLink="#"
+                    buttonClass="btn bg-surface text-newPrimary btn-sm  absolute top-2 left-2"></app-button>
+                <img src="assets/images/rafiqaneh-main-poster.jpg" class="w-full max-h-52 object-cover"
+                    alt="featured-image" />
+                <div class="flex-1 flex flex-col justify-between my-2 px-3">
+                    <a class="cursor-pointer">
+                        <h2 class="text-sm lg:text-base text-neutrals100">عنوان پست اول اینجا قرار میگیره
+                        </h2>
+                    </a>
+                    <hr class="my-3 border border-gray-100">
+                    <app-button title="نام و نام خانوادگی کاربر" hrefLink="#" routerLink="#"
+                        buttonClass="flex flex-row-reverse gap-x-1 items-center text-xs font-lightYekan hover:font-boldYekan"
+                        icon="assets/images/user.png" iconClass="w-7"></app-button>
+                </div>
+            </div>
+
+            <div
+                class="customDirectiveItem relative flex flex-col justify-between border border-surfaceBorder mx-[3%] bg-surface">
+                <app-button title="{{'#' + 'سرزمین فردامون'}}" hrefLink="#" routerLink="#"
+                    buttonClass="btn bg-surface text-newPrimary btn-sm  absolute top-2 left-2"></app-button>
+                <img src="assets/images/rafiqaneh-main-poster.jpg" class="w-full max-h-52 object-cover"
+                    alt="featured-image" />
+                <div class="flex-1 flex flex-col justify-between my-2 px-3">
+                    <a class="cursor-pointer">
+                        <h2 class="text-sm lg:text-base text-neutrals100">عنوان پست اول اینجا قرار میگیره
+                        </h2>
+                    </a>
+                    <hr class="my-3 border border-gray-100">
+                    <app-button title="نام و نام خانوادگی کاربر" hrefLink="#" routerLink="#"
+                        buttonClass="flex flex-row-reverse gap-x-1 items-center text-xs font-lightYekan hover:font-boldYekan"
+                        icon="assets/images/user.png" iconClass="w-7"></app-button>
+                </div>
+            </div>
+
+        </div>
+        <div class="flex items-center justify-center gap-x-8 mt-3">
+            <button appPrev type="button"
+                class="border border-surfaceBorder bg-surface  hover:bg-slate-50 rounded-full px-4 py-2 rotate-180">
+                <img src="assets/images/arrow.png" class="w-5" alt="arrow">
+            </button>
+            <button appNext type="button"
+                class="border  border-surfaceBorder bg-surface hover:bg-slate-50 rounded-full px-4 py-2">
+                <img src="assets/images/arrow.png" class="w-5" alt="arrow">
+            </button>
+        </div>
+    </div>
+</section> -->
+
+
+<!-- svg divider  -->
+<!-- <span *ngIf="isAdmin" class="grid rotate-180" style="--curveColor:red;--strokeColor:blue;background-color:#FEEFF0"><svg
+        width="1001" height="111" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1001 111"
+        preserveAspectRatio="none"
+        class="col-span-12 col-start-1 row-start-1 h-full w-full self-end -mb-1 max-h-24 md:max-h-36">
+        <path
+            d="M407.21 15.8956C537.851 42.4389 599.349 76.6302 838.741 93.501C917.226 99.032 967.922 93.2301 1001 81.1469L1001 111H0V21.5267C98.1188 10.501 242.474 -17.575 407.21 15.8956Z"
+            style="fill:white"></path>
+    </svg><svg class="col-span-12 col-start-1 row-start-1 h-full w-full self-end max-h-32 md:max-h-44"
+        preserveAspectRatio="none" viewBox="0 0 1003 143" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M1002 114.237C968.911 126.309 918.6 146.592 840.089 141.066C600.613 124.211 539.244 38.2043 408.557 11.6857C243.764 -21.754 98.2857 30.6679 1.00002 67.6339"
+            style="stroke:#fb6068" vector-effect="non-scaling-stroke" x="0" y="0" width="100" height="100" fill="none"
+            stroke-linecap="square" stroke-width="1" stroke-miterlimit="30"></path>
+    </svg>
+</span> -->
+<!-- *ngIf="isAdmin" -->
+<section class=" pb-12" id="#chaleshha">
+    <div class="max-w-screen-2xl xl:container xl:mx-auto lg:gap-y-0 px-10 xl:pl-10 xl:pr-32 lg:px-4">
+        <div class="grid grid-cols-12 items-center gap-x-0 lg:gap-x-8 gap-y-8 lg:gap-y-0">
+            <div class="col-span-12 lg:col-span-6 flex flex-col gap-y-8">
+                <app-custom-tab-bar class="self-center lg:self-start" [tabsArray]="tabs"
+                    (onTabChange)="tabChange($event)"></app-custom-tab-bar>
+                <!-- <div *ngIf="activatedTabIndex == 0" class="w-full">
+                    <div [ngClass]="activatedTabIndex == 0 ? 'opacity-100':'opacity-0'"
+                        class="flex flex-col gap-y-6 transition-all duration-500">
+                        <div class="relative flex items-center">
+                            <div class="bg-red-500 h-1 w-5 rounded-full absolute -right-4"></div>
+                            <h3 class="text-xl md:text-2xl text-neutrals100 font-boldYekan mr-3">
+                                سرای سرشت </h3>
+                        </div>
+                        <div class="relative">
+                            <svg style="width:9px" preserveAspectRatio="none" viewBox="0 0 9 169" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="absolute -right-4 rotate-180 h-full">
+                                <path
+                                    d="M7.84313 75.6586C7.60784 71.11 7.37255 66.5614 7.05882 61.937C6.58824 55.7205 6.03922 49.5041 5.4902 43.2877C4.86275 35.1001 4.2353 26.9884 3.68628 18.8009C3.29412 12.9636 3.05883 7.12616 2.7451 1.28877C2.66667 0.833912 2.58824 0.454861 2.50981 -2.83695e-07C1.96079 0.15162 1.33334 0.15162 0.941183 0.454861C0.627458 0.682292 0.392164 1.21296 0.313733 1.59201C0.15687 2.50174 7.48027e-06 3.41146 7.44382e-06 4.24537C0.0784384 9.17304 7.00972e-06 14.1765 0.313732 19.1042C1.09804 32.8258 1.96079 46.4717 2.82353 60.1933C3.05883 64.6661 3.45098 69.1389 3.60784 73.5359C3.84314 80.3589 4 87.1818 4.07843 94.0047C4.15686 101.586 4.23529 109.243 4.07843 116.824C3.92157 124.859 3.37255 132.895 3.05882 141.007C2.90196 144.343 2.82353 147.678 2.66667 151.09C2.43137 156.017 2.11765 160.869 1.80392 165.797C1.72549 166.555 1.80392 167.313 0.862745 167.768C0.156863 168.147 0.392157 168.754 1.01961 168.905C1.80392 169.057 2.66666 168.981 3.52941 168.981C5.80392 168.905 6.35294 168.526 6.66666 166.328C7.05882 163.75 7.21568 161.097 7.45097 158.443C7.45097 158.443 8.31372 141.841 8.62745 133.502C8.78431 129.332 8.94117 125.087 8.94117 120.917C9.0196 114.473 9.0196 108.03 8.94117 101.586C8.86274 96.8855 8.70588 92.1853 8.54902 87.485C8.39215 83.4671 8.07843 79.525 7.84313 75.6586Z"
+                                    class="fill-[#fb6068]"></path>
+                            </svg>
+                            <p class="font-lightYekan text-neutrals100">
+                                حتما برای توهم پیش اومده که گاهی حال خوبی نداشته باشی گاهی انگار که هیچ راهی برای خروج
+                                از این حالمون
+                                نیست اما....
+                                باید بدونی تمام این حال بد به این خاطره که سرزمین درونت اونطوری که باید آباد نیست.....
+                                بله درست شنیدی:
+                                سرزمین درون!
+                                اگر دوست داری حال بهتری داشته باشی باید بیشتر روی این سرزمین وقت بزاری تا به حال خوب
+                                برسی .....
+                                <span class="font-boldYekan text-newSurfaceText">
+                                    پس وارد سرای سرشت خودت شو
+                                </span>
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-end gap-x-6">
+                            <button
+                                class="bg-surface rounded-full border-2 border-newPrimary p-2.5 flex flex-col justify-center items-center">
+                                <img src="assets/images/play.png" class="w-6 animate-pulse" alt="play">
+                            </button>
+                            <app-button title="ورود به چالش" hrefLink="#" routerLink="#"
+                                buttonClass="btn btn-primary btn-md"></app-button>
+
+                        </div>
+                    </div>
+                </div> -->
+                <div *ngIf="activatedTabIndex == 0" class="w-full">
+                    <div [ngClass]="activatedTabIndex == 0 ? 'opacity-100':'opacity-0'"
+                        class="flex flex-col gap-y-6 transition-all duration-500">
+                        <div class="relative flex items-center">
+                            <div class="bg-red-500 h-1 w-5 rounded-full absolute -right-4"></div>
+                            <h3 class="text-lg md:text-2xl text-neutrals100 font-boldYekan mr-3">
+                                چند دقیقه از وقتت رو به ما بده تا ما چندین سال از زندگیت رو بهت هدیه کنیم!</h3>
+                        </div>
+                        <div class="relative">
+                            <svg style="width:9px" preserveAspectRatio="none" viewBox="0 0 9 169" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="absolute -right-4 rotate-180 h-full">
+                                <path
+                                    d="M7.84313 75.6586C7.60784 71.11 7.37255 66.5614 7.05882 61.937C6.58824 55.7205 6.03922 49.5041 5.4902 43.2877C4.86275 35.1001 4.2353 26.9884 3.68628 18.8009C3.29412 12.9636 3.05883 7.12616 2.7451 1.28877C2.66667 0.833912 2.58824 0.454861 2.50981 -2.83695e-07C1.96079 0.15162 1.33334 0.15162 0.941183 0.454861C0.627458 0.682292 0.392164 1.21296 0.313733 1.59201C0.15687 2.50174 7.48027e-06 3.41146 7.44382e-06 4.24537C0.0784384 9.17304 7.00972e-06 14.1765 0.313732 19.1042C1.09804 32.8258 1.96079 46.4717 2.82353 60.1933C3.05883 64.6661 3.45098 69.1389 3.60784 73.5359C3.84314 80.3589 4 87.1818 4.07843 94.0047C4.15686 101.586 4.23529 109.243 4.07843 116.824C3.92157 124.859 3.37255 132.895 3.05882 141.007C2.90196 144.343 2.82353 147.678 2.66667 151.09C2.43137 156.017 2.11765 160.869 1.80392 165.797C1.72549 166.555 1.80392 167.313 0.862745 167.768C0.156863 168.147 0.392157 168.754 1.01961 168.905C1.80392 169.057 2.66666 168.981 3.52941 168.981C5.80392 168.905 6.35294 168.526 6.66666 166.328C7.05882 163.75 7.21568 161.097 7.45097 158.443C7.45097 158.443 8.31372 141.841 8.62745 133.502C8.78431 129.332 8.94117 125.087 8.94117 120.917C9.0196 114.473 9.0196 108.03 8.94117 101.586C8.86274 96.8855 8.70588 92.1853 8.54902 87.485C8.39215 83.4671 8.07843 79.525 7.84313 75.6586Z"
+                                    class="fill-[#fb6068]"></path>
+                            </svg>
+                            <p class="font-lightYekan text-neutrals100">
+                                بله دوست عزیزم درست اومدی
+                                اینجا بعد از شناساییِ استعدادهات، برای انتخاب رشته و شغل در آینده بهت کمک میکنیم
+                                اگر دوست داری با انتخاب‌های بهتر فردای درخشان تری داشته باشی....
+                                <span class="font-boldYekan text-newSurfaceText">
+                                    با ما همراه شو ....
+                                </span>
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-end gap-x-6">
+                            <!-- <button
+                                class="bg-surface rounded-full border-2 border-newPrimary  p-2.5 flex flex-col justify-center items-center">
+                                <img src="assets/images/play.png" class="w-6 animate-pulse" alt="play">
+                            </button> -->
+                            <app-button title="ورود به چالش" hrefLink="#" routerLink="fardamoon/space"
+                                buttonClass="btn btn-primary btn-md text-sm"></app-button>
+
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="activatedTabIndex == 1" class="w-full">
+                    <div [ngClass]="activatedTabIndex == 1 ? 'opacity-100':'opacity-0'"
+                        class="flex flex-col gap-y-6 transition-all duration-500">
+                        <div class="relative flex items-center">
+                            <div class="bg-red-500 h-1 w-5 rounded-full absolute -right-4"></div>
+                            <h3 class="text-xl md:text-2xl text-neutrals100 font-boldYekan mr-3">
+                                سرای سرشت </h3>
+                        </div>
+                        <div class="relative">
+                            <svg style="width:9px" preserveAspectRatio="none" viewBox="0 0 9 169" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="absolute -right-4 rotate-180 h-full">
+                                <path
+                                    d="M7.84313 75.6586C7.60784 71.11 7.37255 66.5614 7.05882 61.937C6.58824 55.7205 6.03922 49.5041 5.4902 43.2877C4.86275 35.1001 4.2353 26.9884 3.68628 18.8009C3.29412 12.9636 3.05883 7.12616 2.7451 1.28877C2.66667 0.833912 2.58824 0.454861 2.50981 -2.83695e-07C1.96079 0.15162 1.33334 0.15162 0.941183 0.454861C0.627458 0.682292 0.392164 1.21296 0.313733 1.59201C0.15687 2.50174 7.48027e-06 3.41146 7.44382e-06 4.24537C0.0784384 9.17304 7.00972e-06 14.1765 0.313732 19.1042C1.09804 32.8258 1.96079 46.4717 2.82353 60.1933C3.05883 64.6661 3.45098 69.1389 3.60784 73.5359C3.84314 80.3589 4 87.1818 4.07843 94.0047C4.15686 101.586 4.23529 109.243 4.07843 116.824C3.92157 124.859 3.37255 132.895 3.05882 141.007C2.90196 144.343 2.82353 147.678 2.66667 151.09C2.43137 156.017 2.11765 160.869 1.80392 165.797C1.72549 166.555 1.80392 167.313 0.862745 167.768C0.156863 168.147 0.392157 168.754 1.01961 168.905C1.80392 169.057 2.66666 168.981 3.52941 168.981C5.80392 168.905 6.35294 168.526 6.66666 166.328C7.05882 163.75 7.21568 161.097 7.45097 158.443C7.45097 158.443 8.31372 141.841 8.62745 133.502C8.78431 129.332 8.94117 125.087 8.94117 120.917C9.0196 114.473 9.0196 108.03 8.94117 101.586C8.86274 96.8855 8.70588 92.1853 8.54902 87.485C8.39215 83.4671 8.07843 79.525 7.84313 75.6586Z"
+                                    class="fill-[#fb6068]"></path>
+                            </svg>
+                            <p class="font-lightYekan text-neutrals100">
+                                سفر به دنیای ناشناخته ی درون
+                            </p>
+                            <p class="font-lightYekan text-neutrals100">
+                                میدونستی هر کدوم از ما در درون خودمون یه کشور و سرزمین داریم؟ سرزمینی که حال خوبمون
+                                میتونه باعث شکوفاییش و حال بدمون میتونه باعث خرابیش بشه
+                            </p>
+                            <p class="font-lightYekan text-neutrals100">
+                                قراره اینجا اون سرزمینو بشناسیم و هرچه بیشتر باهم بسازیمش و از پس چالشاش بربیایم
+                            </p>
+                            <p class="font-lightYekan text-neutrals100">
+                                به زودی توی سرای سرشت باهم کلی حس و حال خوب میسازیم </p>
+                        </div>
+                        <!-- <div class="flex items-center justify-end gap-x-6">
+                            <button
+                                class="bg-surface rounded-full border-2 border-newPrimary p-2.5 flex flex-col justify-center items-center">
+                                <img src="assets/images/play.png" class="w-6 animate-pulse" alt="play">
+                            </button>
+                            <app-button title=" ورود به چالش" hrefLink="#" routerLink="#"
+                                buttonClass="btn btn-primary btn-md"></app-button>
+
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="h-full col-span-12 lg:col-span-6 order-first lg:order-last items-center flex flex-col pt-10">
+                <img *ngIf="activatedTabIndex == 0 " src="assets/fardamoon-event/banner/fardamoon-new-poster1403-2.jpg"
+                    class="w-full md:w-2/5 rounded-3xl" alt="saraye-seresht-poster">
+                <img *ngIf="activatedTabIndex == 1 " src="assets/images/saraye-seresht-poster.jpg"
+                    class="w-full md:w-2/5 rounded" alt="fardamoon-poster">
+                <!--      <img *ngIf="activatedTabIndex == 2 " src="assets/images/coach-carousel-image.webp" alt=""> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 
+<svg class="w-full mb-12" preserveAspectRatio="none" width="942" height="13" viewBox="0 0 942 13" fill="none"
+xmlns="http://www.w3.org/2000/svg">
+<path
+  d="M585.878 10.8001C581.251 10.7001 577.058 10.5001 572.72 10.4001C571.708 10.4001 570.841 10.3001 570.118 9.9001C569.973 9.8001 569.829 9.5001 569.829 9.3001C569.829 9.2001 569.973 9.0001 570.262 8.9001C570.696 8.8001 571.13 8.7001 571.564 8.6001C572.72 8.5001 573.877 8.4001 575.034 8.3001C575.757 8.2001 576.48 8.3001 577.058 8.1001C580.673 7.3001 584.432 7.4001 588.047 7.30011C589.782 7.20011 591.517 7.20011 593.252 7.10011C595.132 7.00011 597.011 7.00011 598.746 7.00011C600.337 7.00011 601.349 7.60011 602.217 8.40011C602.65 8.80011 602.361 9.60011 601.783 9.90011C601.494 10.0001 601.204 10.2001 600.915 10.2001C600.192 10.3001 599.614 10.5001 598.891 10.5001C594.409 10.6001 590.071 10.7001 585.878 10.8001Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M736.541 11.3001C732.926 11.2001 729.166 11.0001 725.552 10.9001C723.817 10.8001 722.082 10.6001 720.491 10.3001C720.057 10.2001 719.624 10.1001 719.334 9.90012C719.19 9.80012 719.045 9.50012 719.045 9.30012C719.045 9.20012 719.19 9.00012 719.479 8.90012C720.202 8.80012 720.78 8.70012 721.503 8.60012C723.238 8.20012 724.973 8.50012 726.564 8.20012C728.154 7.90012 729.745 7.90012 731.335 8.00012C732.203 8.00012 733.215 8.00012 734.083 7.90012C737.264 7.70012 740.589 7.70012 743.77 8.30012C744.348 8.40012 744.927 8.50012 745.361 8.60012C746.662 9.00012 747.963 9.20012 749.409 9.20012C750.132 9.20012 750.71 9.40012 751.289 9.70012C751.867 10.0001 752.012 10.7001 751.289 10.9001C750.71 11.1001 749.987 11.3001 749.409 11.4001C748.542 11.5001 747.529 11.5001 746.662 11.5001C743.192 11.4001 739.866 11.4001 736.541 11.3001C736.541 11.4001 736.541 11.4001 736.541 11.3001Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M497.534 10.0001C495.076 10.0001 492.762 10.0001 490.304 9.90009C487.846 9.80009 485.243 9.50009 482.785 9.30009C482.496 9.30009 482.352 9.20009 482.062 9.10009C481.629 9.00009 481.34 8.70009 481.34 8.40009C481.34 8.10009 481.629 7.80009 482.062 7.60009C482.207 7.50009 482.496 7.50009 482.641 7.40009C484.376 7.20009 485.966 6.90009 487.701 6.90009C489.292 6.80009 490.882 6.70009 492.473 6.50009C492.907 6.40009 493.341 6.50009 493.919 6.50009C497.823 6.50009 501.727 6.40009 505.631 6.40009C507.077 6.4001 508.378 6.9001 509.101 8.3001C509.245 8.7001 508.956 9.4001 508.378 9.5001C507.944 9.6001 507.51 9.8001 507.077 9.8001C506.354 9.9001 505.486 9.9001 504.618 9.9001C502.305 10.0001 499.992 10.0001 497.534 10.0001Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M690.127 7.30012C690.995 7.20012 691.718 7.20012 692.585 7.20012C693.453 7.20012 694.176 7.20012 695.043 7.30012C696.345 7.40012 697.212 8.10012 697.501 9.10012C697.646 9.50012 697.068 10.1001 696.489 10.3001C696.055 10.2001 695.766 10.3001 695.477 10.3001C694.754 10.3001 694.031 10.4001 693.453 10.4001C690.85 10.5001 688.103 10.7001 685.5 10.8001C680.729 10.9001 676.102 11.0001 671.331 11.0001C670.463 11.0001 669.74 11.0001 668.873 10.8001C668.294 10.7001 667.86 10.5001 667.282 10.3001C666.993 10.2001 666.993 9.90011 666.848 9.70011C666.848 9.40011 667.137 9.30011 667.427 9.20011C670.174 8.80011 672.921 8.60011 675.524 8.00011C676.247 7.80012 677.114 7.90012 677.982 7.80012C680.151 7.70012 682.319 7.50012 684.488 7.40012C686.512 7.40012 688.248 7.30012 690.127 7.30012Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M927.977 8.40014C930.436 8.20015 932.604 8.40015 934.629 8.60015C935.93 8.70015 937.087 8.80015 938.388 8.80015C939.978 8.80015 940.991 9.40015 941.714 10.3001C942.436 11.1001 941.714 12.1001 940.412 12.3001C939.979 12.3001 939.545 12.4001 938.966 12.4001C938.243 12.4001 937.52 12.4001 936.942 12.2001C932.604 11.5001 928.267 11.6001 923.784 11.6001C920.025 11.6001 916.41 11.5001 912.651 11.4001C911.928 11.4001 911.205 11.3001 910.627 11.0001C910.482 10.9001 910.338 10.7001 910.338 10.6001C910.338 10.5001 910.482 10.3001 910.627 10.2001C910.771 10.1001 910.916 10.0001 911.205 9.90014C912.94 9.60014 914.675 9.10014 916.7 9.20014C918.145 9.30014 919.736 9.10014 921.182 8.80014C922.338 8.60014 923.64 8.50014 924.941 8.40014C926.098 8.40014 927.255 8.40014 927.977 8.40014Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M329.954 10.1001C327.351 10.1001 324.604 10.0001 322.002 10.0001C320.411 10.0001 318.821 9.80007 317.23 9.40007C316.941 9.30007 316.796 9.00007 316.652 8.80007C316.507 8.60007 316.941 8.00007 317.23 8.00007C318.242 7.80007 319.254 7.60007 320.266 7.50007C323.014 7.20007 325.761 7.00007 328.508 6.80007C332.846 6.60007 337.183 6.40008 341.521 6.00008C341.81 6.00008 341.955 6.00008 342.244 6.00008C343.545 6.00008 344.268 6.40008 344.702 7.40008C344.991 8.20008 344.413 9.10008 343.256 9.30008C342.1 9.50008 341.087 9.70008 339.931 9.80008C336.605 10.0001 333.28 10.3001 329.954 10.1001Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M835.585 7.90013C836.741 7.90013 837.898 7.90013 839.055 7.90013C840.645 7.90013 842.236 8.00013 843.826 8.50014C844.405 8.70014 845.128 8.80014 845.85 9.00014C846.284 9.10014 846.573 9.40014 846.573 9.70014C846.573 10.1001 846.429 10.3001 845.995 10.5001C845.706 10.6001 845.417 10.8001 845.128 10.9001C844.115 11.1001 843.103 11.3001 842.091 11.4001C839.778 11.5001 837.464 11.5001 835.151 11.3001C832.114 11.0001 829.223 10.8001 826.186 10.6001C824.307 10.5001 822.571 10.5001 820.692 10.5001C818.668 10.5001 816.499 10.4001 814.619 10.0001C814.475 10.0001 814.475 9.80013 814.33 9.60013C814.33 9.50013 814.33 9.50013 814.474 9.40013C814.474 9.30013 814.619 9.30013 814.764 9.20013C815.053 9.10013 815.342 9.00013 815.776 8.90013C817.8 8.70013 819.824 8.50013 821.993 8.40013C824.162 8.30013 826.331 8.30013 828.5 8.00013C830.813 7.70013 833.127 7.90013 835.585 7.90013Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M620.58 8.90011C622.748 9.30011 625.206 8.90011 627.52 8.70011C629.978 8.40011 632.291 8.30011 634.749 8.30011C635.472 8.30011 636.195 8.30011 636.774 8.20011C639.376 7.70011 641.979 7.90011 644.726 7.70011C646.027 7.60011 647.184 7.80011 648.485 8.10011C648.919 8.20011 649.208 8.50011 649.353 8.80011C649.497 9.20011 649.208 9.70011 648.775 9.90011C648.196 10.1001 647.618 10.4001 646.895 10.5001C643.858 11.0001 640.678 11.3001 637.641 11.3001C634.171 11.4001 630.701 11.3001 627.231 11.0001C625.64 10.9001 624.05 10.9001 622.459 10.8001C621.158 10.8001 620.001 10.6001 618.844 10.2001C618.555 10.1001 618.121 9.60011 618.266 9.40011C618.411 9.20011 618.844 8.90011 619.278 8.80011C619.423 8.80011 619.567 8.80011 619.567 8.80011C619.857 8.90011 620.001 8.90011 620.58 8.90011Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M784.4 7.90013C785.846 7.90013 787.292 7.80013 788.593 7.80013C790.039 7.80013 791.34 7.90013 792.786 8.10013C794.666 8.40013 795.822 9.20013 796.834 10.2001C797.268 10.7001 796.835 11.5001 795.967 11.5001C795.389 11.5001 794.81 11.6001 794.232 11.5001C788.593 11.0001 782.954 11.0001 777.315 10.9001C774.278 10.8001 771.242 10.7001 768.35 10.5001C768.061 10.5001 767.772 10.3001 767.483 10.2001C767.194 10.1001 767.194 9.50013 767.483 9.30013C767.772 9.20013 768.061 9.00013 768.35 9.00013C769.941 8.90013 771.531 8.60013 773.122 8.40013C774.712 8.30013 776.303 8.10013 777.893 7.90013C779.484 7.70013 781.074 7.80013 782.809 7.80013C783.388 7.90013 783.966 7.90013 784.4 7.90013Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M46.5579 0.200041C49.5943 0.200041 52.486 0.200041 55.5225 0.200042C56.2454 0.200042 57.113 0.300042 57.8359 0.400042C58.4143 0.500043 58.848 0.800043 58.9926 1.20004C59.2818 2.10004 58.5589 3.10004 57.4022 3.30004C55.8117 3.60004 54.2211 3.70004 52.6306 3.70004C47.8592 3.60004 43.2323 3.50004 38.4609 3.10004C37.015 3.00004 35.4245 2.90004 33.9786 2.70004C33.2557 2.60004 32.9664 2.30004 33.111 1.80004C33.2556 1.60004 33.2556 1.30004 33.4002 1.10004C33.5448 0.60004 34.1232 0.30004 34.8461 0.20004C35.569 0.100039 36.4366 4.00424e-05 37.3041 4.01183e-05C39.3284 4.02952e-05 41.2081 4.04596e-05 43.2323 4.06365e-05C44.2444 0.100041 45.4012 0.10004 46.5579 0.200041C46.5579 0.10004 46.5579 0.10004 46.5579 0.200041Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M456.615 6.80009C458.639 6.70009 460.808 6.70009 462.832 6.70009C463.7 6.70009 464.712 6.70009 465.579 6.80009C466.447 6.80009 467.025 7.20009 467.603 7.60009C468.182 8.10009 468.037 8.90009 467.17 9.20009C466.881 9.30009 466.591 9.40009 466.158 9.50009C464.133 9.70009 461.965 9.90009 459.94 10.0001C455.603 10.1001 451.409 10.1001 447.072 10.0001C444.903 10.0001 442.734 9.70009 440.565 9.50009C440.276 9.50009 440.131 9.40009 439.842 9.40009C439.264 9.30009 438.83 8.80009 438.975 8.50009C439.119 8.20009 439.553 7.90009 439.842 7.90009C443.312 7.60009 446.638 7.10009 450.108 7.20009C452.422 7.10009 454.59 6.90009 456.615 6.80009Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M370.728 10.4001C367.692 10.3001 364.511 10.2001 361.475 10.0001C360.896 10.0001 360.318 9.90008 359.74 9.80008C359.306 9.70008 359.017 9.50008 358.583 9.30008C358.294 9.10008 358.438 8.60008 358.727 8.50008C358.872 8.40008 359.161 8.40008 359.306 8.30008C361.908 7.80008 364.656 7.40008 367.403 7.30008C369.427 7.20008 371.596 7.30008 373.62 7.00008C373.765 7.00008 373.909 7.00008 373.909 7.00008C376.656 7.10008 379.404 7.00008 382.151 7.00008C383.308 7.00008 384.031 7.40008 384.754 8.00008C385.477 8.70008 385.043 9.70008 383.886 10.0001C382.296 10.4001 380.56 10.5001 378.825 10.5001C376.223 10.5001 373.476 10.5001 370.728 10.4001Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M536.428 9.4001C534.259 9.4001 532.091 9.4001 529.777 9.4001C528.331 9.4001 527.03 9.3001 525.729 9.0001C525.295 8.9001 525.006 8.6001 524.716 8.4001C524.427 8.2001 524.716 7.7001 525.006 7.6001C525.295 7.5001 525.584 7.4001 526.018 7.4001C527.608 7.2001 529.199 7.1001 530.789 6.8001C532.524 6.5001 534.259 6.4001 535.994 6.3001C539.609 6.2001 543.079 6.0001 546.694 5.9001C546.983 5.9001 547.417 5.9001 547.706 5.9001C549.152 5.8001 550.164 6.3001 551.032 6.9001C551.61 7.2001 551.466 8.1001 550.743 8.4001C550.164 8.6001 549.441 8.8001 548.863 8.9001C545.827 9.3001 542.646 9.5001 539.609 9.4001C538.452 9.4001 537.44 9.5001 536.428 9.4001Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M94.5618 2.10005C96.7307 2.00005 98.4656 2.00005 100.201 2.00005C101.068 2.00005 101.791 2.00005 102.659 2.00005C104.105 2.10005 104.972 3.10005 104.538 4.10005C104.249 4.60005 103.815 4.90005 103.093 5.00005C102.803 5.00005 102.659 5.00005 102.37 5.10005C95.4293 5.60005 88.6335 5.40005 81.8378 4.80005C81.4041 4.80005 80.9703 4.70005 80.5366 4.60005C79.669 4.50005 79.2352 3.90005 79.5244 3.30004C79.669 3.00004 79.9582 2.70004 80.5366 2.70004C84.4405 2.30005 88.3444 1.90005 92.2483 2.10005C93.1158 2.10005 93.9834 2.10005 94.5618 2.10005Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M298.867 5.50007C300.168 5.50007 301.181 5.70007 302.337 6.00007C303.205 6.30007 303.783 7.40007 303.349 8.10007C303.06 8.50007 302.627 8.80007 302.048 8.90007C301.47 9.00007 300.891 9.00007 300.313 9.00007C296.987 9.10007 293.662 9.00007 290.336 9.30007C289.758 9.30007 289.18 9.40007 288.601 9.30007C285.565 9.20007 282.384 9.10007 279.348 9.00007C278.914 9.00007 278.48 8.90007 278.046 8.80007C277.757 8.70007 277.468 8.30007 277.612 8.00007C277.757 7.80007 278.046 7.60007 278.191 7.40007C278.191 7.30007 278.335 7.30007 278.48 7.30007C280.649 7.00007 282.818 6.70007 284.842 6.40007C287.011 6.10007 289.18 6.00007 291.349 6.00007C293.517 6.00007 295.686 5.90007 297.855 5.60007C298.144 5.50007 298.578 5.50007 298.867 5.50007Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M254.623 9.00007C251.731 8.80007 248.839 8.70006 246.092 8.50006C244.357 8.40006 242.622 8.20006 241.031 8.00006C240.597 8.00006 240.164 7.90006 239.73 7.80006C238.862 7.60006 238.429 7.20006 238.573 6.80006C238.718 6.40006 239.152 6.10006 239.73 6.10006C240.453 6.10006 241.176 6.10006 241.754 6.00006C245.08 5.40006 248.55 5.50006 252.02 5.40007C253.611 5.40007 255.201 5.20007 256.792 5.20007C257.804 5.20007 258.816 5.10007 259.828 5.10007C261.129 5.10007 261.997 5.80007 261.997 6.60007C261.997 6.80007 261.997 6.90007 261.997 7.10007C261.852 7.80007 261.274 8.30007 260.406 8.50007C258.527 8.80007 256.502 9.10007 254.623 9.00007Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M411.069 10.4001C409.045 10.4001 406.876 10.4001 404.852 10.4001C404.418 10.4001 403.984 10.3001 403.55 10.2001C403.116 10.1001 402.683 9.60008 402.683 9.20008C402.683 8.80008 402.972 8.60008 403.406 8.50008C404.273 8.30008 405.141 8.10008 405.864 7.80008C406.297 7.60008 406.876 7.50008 407.454 7.50008C411.358 7.20008 415.262 6.80008 419.166 6.80009C420.178 6.80009 421.19 6.80009 422.202 6.80009C423.648 6.80009 424.516 7.40009 425.239 8.20009C425.528 8.60009 425.383 9.20009 424.805 9.50009C424.371 9.70009 423.793 9.90009 423.214 10.0001C419.311 10.3001 415.262 10.7001 411.069 10.4001Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M883.878 8.10014C885.757 8.30014 887.782 8.50014 889.661 8.70014C890.963 8.90014 891.83 9.50014 892.553 10.3001C892.987 10.9001 892.408 11.7001 891.541 11.8001C890.673 11.8001 889.95 11.8001 889.083 11.7001C884.022 11.3001 878.962 11.0001 873.901 11.0001C871.877 11.0001 869.708 11.0001 867.684 11.0001C867.394 11.0001 866.961 10.9001 866.671 10.9001C866.382 10.8001 866.093 10.3001 866.382 10.1001C866.527 10.0001 866.671 9.80014 866.816 9.80014C869.419 9.30014 872.021 8.70014 874.913 8.70014C876.359 8.70014 877.949 8.70014 879.395 8.40014C880.841 8.10014 882.287 8.10014 883.878 8.10014Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M169.17 3.70006C171.628 3.60006 173.652 3.50006 175.677 3.40006C175.966 3.40006 176.11 3.40006 176.4 3.40006C178.858 3.50006 181.171 3.40006 183.629 3.20006C184.641 3.10006 185.364 3.50006 185.943 4.10006C186.521 4.80006 186.232 5.80006 185.075 6.10006C184.207 6.30006 183.34 6.60006 182.472 6.60006C180.014 6.70006 177.701 6.70006 175.243 6.60006C173.363 6.50006 171.628 6.40006 169.748 6.20006C167.724 6.00006 165.7 5.90006 163.531 5.60005C163.097 5.60005 162.664 5.40005 162.23 5.20005C161.941 5.10005 161.796 4.80005 161.796 4.60005C161.796 4.40005 162.085 4.10006 162.374 4.00005C162.808 3.80006 163.242 3.70005 163.676 3.70005C165.122 3.60005 166.712 3.60006 168.158 3.60006C168.592 3.60006 169.026 3.70006 169.17 3.70006Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M125.359 2.90005C126.661 3.00005 128.54 2.90005 130.42 2.70005C132.3 2.50005 134.179 2.60005 135.914 2.60005C137.216 2.60005 138.083 3.20005 138.228 4.00005C138.372 4.60005 137.794 5.40005 136.927 5.50005C136.204 5.60005 135.336 5.70005 134.469 5.80005C129.697 6.10005 124.926 6.10005 120.01 6.00005C119.142 6.00005 118.419 5.80005 117.552 5.70005C117.118 5.60005 116.684 5.20005 116.539 4.80005C116.539 4.40005 116.829 4.00005 117.262 3.80005C118.419 3.30005 119.72 3.00005 121.166 2.90005C122.468 2.90005 123.624 2.90005 125.359 2.90005Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M221.222 4.50006C222.379 4.50006 223.102 4.50006 223.68 4.50006C224.403 4.50006 224.982 4.80006 225.416 5.10006C226.428 5.90006 225.849 7.20006 224.403 7.40006C222.09 7.60006 219.632 7.90006 217.174 7.90006C213.993 7.90006 210.812 7.70006 207.486 7.60006C207.053 7.60006 206.619 7.50006 206.185 7.40006C205.751 7.30006 205.462 7.10006 205.318 6.70006C205.173 6.40006 205.607 5.90006 206.185 5.70006C206.33 5.60006 206.619 5.60006 206.763 5.50006C207.197 5.40006 207.631 5.30006 208.065 5.30006C211.246 5.50006 214.138 4.90006 217.318 4.60006C218.909 4.60006 220.21 4.60006 221.222 4.50006Z"
+  fill="#FDC3C6"></path>
+<path
+  d="M7.37402 3.70004C5.34979 3.80004 3.3255 3.50004 1.30127 3.30004C1.01209 3.30004 0.867493 3.20004 0.578309 3.20004C0.433717 3.10004 8.56746e-07 2.60004 8.7423e-07 2.40004C8.91715e-07 2.20004 0.144593 1.90004 0.433778 1.80004C0.722901 1.50004 1.15668 1.30004 1.59046 1.30004C3.3255 1.00004 4.91602 0.700036 6.65112 0.800037C7.8078 0.900037 8.96454 0.700037 10.1213 0.600037C11.4226 0.500037 12.8685 0.400038 14.3143 0.400038C15.0373 0.400038 15.4711 0.800037 15.9049 1.20004C16.194 1.70004 16.0494 2.10004 15.6157 2.50004C15.0373 3.00004 14.459 3.30004 13.736 3.30004C11.5672 3.50004 9.54291 3.70004 7.37402 3.70004Z"
+  fill="#FDC3C6"></path>
+</svg> -->

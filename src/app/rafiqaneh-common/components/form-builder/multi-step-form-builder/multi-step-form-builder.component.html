@@ -1,0 +1,24 @@
+<div *ngIf="multiStepForm">
+    <div *ngFor="let step of multiStepForm.steps;let i = index" class="flex flex-col gap-y-6">
+        <ng-template [ngIf]="i == currentStep">
+
+            <div class="flex items-center gap-x-1.5" *ngIf="step.stepTitle">
+                <p style="border: solid 2px #8946A6; background-color: #8946a66b;padding: 0px 10px;"
+                    class="text-base text-white rounded-full">{{i+1}}</p>
+                <p class="text-surface text-sm">{{step.stepTitle}}</p>
+            </div>
+
+            <form-builder [readonly]="readonly" [formDefinition]="step.form" (fieldChanged)="formFieldChanged(step, $event)"></form-builder>
+
+            <!-- next / previous / submit button -->
+            <div class="flex items-center gap-x-3 self-center">
+                <!-- <button class="playPauseSound">ثبت</button> -->
+                <button class="playPauseSound" (click)="prevStep()" *ngIf="i != 0">قبل</button>
+                <button class="playPauseSound" (click)="nextStep()">
+                    {{ i != multiStepForm.steps.length-1 ? 'بعد' : 'ثبت'}}
+                </button>
+            </div>
+        </ng-template>
+    </div>
+
+</div>

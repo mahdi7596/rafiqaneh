@@ -1,0 +1,24 @@
+<div class="m-2">
+    <h1><a [routerLink]="['/admin-area', 'karmoon-users']">نتایج کارمون </a>/ {{karmoonDetails?.user.firstName}} {{karmoonDetails?.user.lastName}} </h1>
+</div>
+<mat-tab-group>
+    <mat-tab label="آزمون هالند">
+        <div class="bg-black p-2">
+            <multi-step-form-builder [getFormValueApi]="'api/forms/byName?formName=karmoon2-planet&userId=' + userId" [readonly]="true" [multiStepForm]="karmoon2Form"></multi-step-form-builder>
+        </div>
+    </mat-tab>
+    <mat-tab label="آزمون MBTI ">
+        <div class="bg-black p-2">
+            <multi-step-form-builder [getFormValueApi]="'api/forms/byName?formName=karmoon3-planet&userId=' + userId" [readonly]="true" [multiStepForm]="karmoon3Form"></multi-step-form-builder>
+        </div>
+    </mat-tab>
+    <mat-tab label="آزمون هوش چندگانه"> 
+        <div class="bg-black p-2">
+            <multi-step-form-builder [getFormValueApi]="'api/forms/byName?formName=karmoon4-planet&userId=' + userId" [readonly]="true" [multiStepForm]="karmoon4Form"></multi-step-form-builder>
+        </div>
+    </mat-tab>
+    <mat-tab label="چالش شغلی 1 "> </mat-tab>
+    <mat-tab label="چالش شغلی 2"> </mat-tab>
+    <mat-tab label="چالش شغلی آخر"> </mat-tab>
+    <mat-tab label="کارنامه"> </mat-tab>
+</mat-tab-group>

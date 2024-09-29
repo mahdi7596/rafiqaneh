@@ -1,0 +1,91 @@
+<mat-accordion class="example-headers-align">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>      
+         <button  mat-raised-button color="primary">جست و جو</button>
+         <button  (click)="downloadCsv($event)" mat-raised-button color="primary">دانلود فایل CSV</button>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field appearance="legacy">
+        <mat-label>شماره موبایل</mat-label>
+        <input matInput placeholder="09........" [(ngModel)]="filter.mobileNumber">
+      </mat-form-field>
+  
+      <mat-form-field appearance="legacy">
+        <mat-label>کد ملی</mat-label>
+        <input matInput [(ngModel)]="filter.nationalCode">
+      </mat-form-field>
+  
+      <mat-form-field appearance="legacy">
+        <mat-label>نام</mat-label>
+        <input matInput [(ngModel)]="filter.name">
+      </mat-form-field>
+  
+      <button (click)="filterClicked()" mat-raised-button color="primary">جست و جو</button>
+      <button (click)="clearFilter()" mat-raised-button>حذف فیلترها</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="mat-elevation-z8" dir="rtl">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="id"> شماره </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> نام </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> نام خانوادگی </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="mobileNumber" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="mobileNumber"> شماره موبایل </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobileNumber}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="nationalCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="nationalCode"> کد ملی </th>
+        <td mat-cell *matCellDef="let element"> {{element.nationalCode}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="birthDate">
+        <th mat-header-cell *matHeaderCellDef > تاریخ تولد </th>
+        <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="createdAt"> تاریخ ثبت نام </th>
+        <td mat-cell *matCellDef="let element"> {{formatDate(element.createdAt)}} </td>
+      </ng-container>
+  
+      <!-- <ng-container matColumnDef="province">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="province"> استان </th>
+        <td mat-cell *matCellDef="let element"> {{province(element.province)}} </td>
+      </ng-container>
+   -->
+      <ng-container matColumnDef="mobileConfirmed">
+        <th mat-header-cell *matHeaderCellDef> موبایل تاییده شده </th>
+        <td mat-cell *matCellDef="let element">
+          <span [ngClass]="element.mobileConfirmed?'text-green-500':'text-red-500'">
+            {{element.mobileConfirmed? 'بله': 'خیر'}}</span>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" dir="rtl" [length]="totalCount" [pageSize]="take"
+      (page)="pageChanged($event)" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>

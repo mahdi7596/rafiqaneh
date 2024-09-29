@@ -1,0 +1,101 @@
+<div *ngIf="formDefinition" [formGroup]="form">
+    <div *ngFor="let field of formDefinition.fields" [ngClass]="field.classes ?? ''">
+
+        <label *ngIf="field.label && field.inputType !== 'file'" [for]="field.fieldName" class="text-surface"
+            [ngClass]="asGeneralTag(field.label)?.classes ?? ''">{{asGeneralTag(field.label)?.text ??
+            field.label}}</label>
+        <!-- <p class="text-surface">{{field.fieldTitle}}</p> -->
+        <input *ngIf="field.type == 'input' && field.inputType != 'file'" [formControlName]="field.fieldName"
+            [type]="field.inputType" [id]="field.fieldName"
+            class="w-full p-2 text-xs sm:text-sm bg-gray-100 border border-mainGray rounded focus:outline-fardamoonPrimary"
+            [ngClass]="field.inputClasses ?? ''" [placeholder]="field.placeHolder ?? field.fieldTitle"
+            [name]="field.fieldName" [ngModel]="field.value" (ngModelChange)="valueChanged(field, $event)" />
+        <div class="flex items-center gap-x-6" *ngIf="field.inputType=='file'">
+            <div [ngClass]="field.inputClasses ?? ''">
+                <label *ngIf="field.label" [for]="field.fieldName"
+                    class="w-fit px-2 py-1 hover:bg-surface text-surface hover:text-fardamoonPrimary text-sm cursor-pointer border rounded">{{field.label}}</label>
+                <input *ngIf="field.type == 'input'  && field.inputType == 'file'" [type]="field.inputType"
+                    [id]="field.fieldName" class="hidden" [name]="field.fieldName"
+                    (change)="onFileChange(field, $event)" />
+            </div>
+            <img class="w-32 rounded"
+                *ngIf="field.previewUploadImage !== false && field.value && ($any(field.value).uploadedFile || $any(field.value).newFile)"
+                [src]="selectedFilesUrl[field.fieldName] ?? $any(field.value).uploadedFile" />
+        </div>
+        <select *ngIf="field.type == 'select'" [formControlName]="field.fieldName" [id]="field.fieldName"
+            class="w-1/2 p-1.5 text-xs sm:text-sm text-[#ACB7C7] bg-gray-100 border border-mainGray rounded focus:outline-mainColor"
+            [ngClass]="field.inputClasses ?? ''" [ngModel]="field.value" (ngModelChange)="valueChanged(field, $event)">
+            <option *ngFor="let opt of field.options" [ngValue]="opt.value">{{opt.title}}</option>
+        </select>
+        <image-select *ngIf="field.type == 'imageselect'" [options]="field.options" [value]="field.value"
+            (valueChange)="valueChanged(field, $event)" [ngClass]="field.inputClasses ?? ''"></image-select>
+        <textarea *ngIf="field.type == 'textarea'" [formControlName]="field.fieldName" [ngModel]="field.value"
+            (ngModelChange)="valueChanged(field, $event)" [id]="field.fieldName" class="w-full"
+            [ngClass]="field.inputClasses ?? ''" [placeholder]="field.placeHolder"></textarea>
+        <div *ngIf="field.type == 'radioselect'" class="col-span-12 flex flex-wrap gap-y-6 gap-x-3 items-center mr-3">
+            <div *ngFor="let opt of field.options"
+                class="flex items-center gap-x-2 px-2 py-0.5 text-surface text-xs sm:text-sm rounded-full cursor-pointer">
+                <input [id]="field.fieldName" type="radio" [value]="opt.value" [formControlName]="field.fieldName"
+                    [ngModel]="field.value" (ngModelChange)="valueChanged(field, $event)" [name]="field.fieldName"
+                    class="bg-purple-600">
+                <label for="default-radio-4">
+                    {{opt.title}}
+                </label>
+            </div>
+        </div>
+
+        <div class="col-span-12" *ngIf="field.type == 'slider'">
+            <mat-slider [ngModel]="field.value" (ngModelChange)="valueChanged(field, $event)"
+                [formControlName]="field.fieldName" [min]="field.sliderOption?.min" [max]="field.sliderOption?.max"
+                [step]="field.sliderOption?.step" [thumbLabel]="true" discrete [displayWith]="formatSliderLabel">
+                <input matSliderThumb>
+            </mat-slider>
+        </div>
+
+        <div class="relative outline-2 outline-black" *ngIf="field.type == 'colorpicker'">
+            <input class="w-20" [colorPicker]="$any(field.value)" (colorPickerChange)="colorPickerChange(field, $event)"
+                [style.background]="field.value" readonly cpOutputFormat="rgba" [cpOKButton]="true"
+                cpOKButtonText="انتخاب" [ngClass]="field.inputClasses??''" />
+        </div>
+
+        <div class="" *ngIf="field.type=='audioselect'">
+            <div class="flex flex-col gap-6" *ngIf="field.options">
+                <div *ngFor="let opt of field.options" (click)="valueChanged(field, opt.value)"
+                    [ngClass]="field.value == opt.value ? 'bg-fardamoonPrimary bg-opacity-10 border-2 border-dashed border-fardamoonPrimary':''"
+                    class="relative  col-span-6 sm:col-span-4 md:col-span-3 flex flex-col gap-y-2 items-center  px-1.5 py-2.5 transformUp1sec500 cursor-pointer">
+                    <audio controls [ngClass]="opt.imageClass ?? ''" (click)="valueChanged(field, opt.value)">
+                        <source [src]="opt.srcUrl" [type]="opt.mediaType ?? 'audio/mpeg'">
+                        مرورگر شما المان صوتی را پشتیبانی نمی کند
+                    </audio>
+                    <p *ngIf="opt.title" class="text-surface text-xs sm:text-sm">
+                        {{opt.title}}
+                    </p>
+                    <!-- checkbox button -->
+                    <img *ngIf="field.value == opt.value" src="assets/icons/checked.png"
+                        class="w-6 absolute top-0 -left-2 transform -translate-y-3" alt="checkbox">
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="getFormField(field.fieldName).invalid && (getFormField(field.fieldName).dirty || getFormField(field.fieldName).touched)"
+            class="text-faslenoMainColor text-xs font-sansbold text-justify leading-6">
+
+            <div *ngIf="getFormField(field.fieldName).errors?.['required']">
+                فیلد الزامی است
+            </div>
+            <div *ngIf="getFormField(field.fieldName).errors?.['minlength']">
+                فیلد باید حداقل {{field.validation?.minLength}} حرف باشد
+            </div>
+            <div *ngIf="getFormField(field.fieldName).errors?.['maxlength']">
+                فیلد باید حداکثر {{field.validation?.maxLength}} حرف باشد
+            </div>
+            <div *ngIf="getFormField(field.fieldName).errors?.['min']">
+                فیلد باید حداقل {{field.validation?.minValue}} باشد
+            </div>
+            <div *ngIf="getFormField(field.fieldName).errors?.['max']">
+                فیلد باید حداکثر {{field.validation?.maxValue}} باشد
+            </div>
+        </div>
+
+    </div>
+</div>

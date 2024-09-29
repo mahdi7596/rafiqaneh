@@ -1,0 +1,11 @@
+<button
+  (click)="callGuideUser()"
+  [matTooltip]="tooltipContent"
+  matTooltipPosition="above"
+  [ngClass]="classes"
+  #startGuide
+>
+  {{ title }}
+  <img *ngIf="icon" [src]="icon" class="w-4 mr-2" alt="icon" />
+</button>
+<!-- [matTooltipPosition]="tooltipPosition" -->

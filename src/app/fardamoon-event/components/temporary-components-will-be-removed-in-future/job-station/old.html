@@ -1,0 +1,235 @@
+<section class="vwhSection">
+    <!-- repeated stars -->
+    <app-repeated-stars></app-repeated-stars>
+    <!-- adamaaak -->
+    <app-astronaut [content]="hintCardContent" [activeContent]="hintCardActiveContent"
+        [restOfContent]="hintCardRestOfContent"></app-astronaut>
+    <!-- motivationalText -->
+    <app-motivational-text title="همه ی ما در طول زندگیمون آرزوهای زیادی داریم.آرزوهای کوچیک و بزرگ...
+    دور و دراز .مهم اینه که از بین این همه آرزوی رنگارنگ کدوم یکی رو تبدیل
+    به هدف میکنیم.
+  "></app-motivational-text>
+    <!-- questionBox && wooden board -->
+    <div class="container z-30 mt-80 customMid:mt-24">
+        <div class="grid grid-cols-12 gap-y-5 customMid:gap-y-0">
+            <!-- ? questionBox -->
+            <!-- question 1 -->
+            <div *ngIf="activeQuestion === 0"
+                class="questionCard col-span-12 customMid:col-span-8 customMid:mb-44 my-4 sm:my-0">
+                <textarea #q1 [value]="currentAnswer.answer" placeholder="پاسخ سوال شماره ۱ را اینجا باید بنویسی"
+                    class="fardamoonTextArea w-full h-28"></textarea>
+                <!-- submit button -->
+                <button (click)="registerCurrentAnswer(q1.value)" class="submitFardamoonForm">
+                    ثبت پاسخ
+                </button>
+            </div>
+            <!-- question 2 -->
+            <div *ngIf="activeQuestion === 1"
+                class="questionCard col-span-12 customMid:col-span-8 customMid:mb-44 my-4 sm:my-0">
+                <textarea #q2 [value]="currentAnswer.answer" placeholder="پاسخ سوال شماره 2 را اینجا باید بنویسی"
+                    class="fardamoonTextArea w-full h-28"></textarea>
+                <!-- submit button -->
+                <button (click)="registerCurrentAnswer(q2.value)" class="submitFardamoonForm">
+                    ثبت پاسخ
+                </button>
+                <!-- hint -->
+                <div class="flex items-start gap-x-1">
+                    <img src="assets/fardamoon/images/info2.png" class="w-8" alt="info">
+                    <p class="text-white text-xs text-justify">
+                        همه ی ما برای رسیدن به شغل ایده آل خودمون دلایلی داریم... انگیزه های درونی
+                        یا بیرونی مثل علاقه و استعداد یا رضایت خانواده و تحسین دیگران... تو فکر
+                        میکنی دلایلت چیه و چی شد که این شغل رو انتخاب کردی
+                    </p>
+                </div>
+                <!-- voice -->
+                <button (click)="toggleVoice(1)" class="playPauseSound">
+                    پخش صوت راهنما
+                    <img [src]="
+                 isPlayingVoice
+                   ? 'assets/icons/voice-hint.png'
+                   : 'assets/icons/pause.png'
+               " class="w-4 mr-0.5" />
+                </button>
+            </div>
+            <!-- question 3 -->
+            <div *ngIf="activeQuestion === 2"
+                class="questionCard col-span-12 customMid:col-span-8 customMid:mb-44 my-4 sm:my-0">
+                <textarea #q3 [value]="currentAnswer.answer" placeholder="پاسخ سوال شماره 3 را اینجا باید بنویسی"
+                    class="fardamoonTextArea w-full h-28"></textarea>
+                <!-- submit button -->
+                <button (click)="registerCurrentAnswer(q3.value)" class="submitFardamoonForm">
+                    ثبت پاسخ
+                </button>
+                <!-- hint -->
+                <div class="flex items-start gap-x-1">
+                    <img src="assets/fardamoon/images/info2.png" class="w-8" alt="info">
+                    <p class="text-white text-xs text-justify">
+                        هر شغلی علاوه بر تحصیلات دانشگاهی به مهارت های دیگه ای هم احتیاج داره...
+                        مثلا یه وکیل علاوه بر اینکه توی دانشگاه باید حقوق بخونه حتما باید فن بیان
+                        خوبی هم داشته باشه... شجاع باشه... حق طلب باشه...شغل مورد علاقه ی تو هم
+                        مهارت های خودشو لازم داره
+                    </p>
+                </div>
+                <!-- voice -->
+                <button (click)="toggleVoice(2)" class="playPauseSound">
+                    پخش صوت راهنما
+                    <img [src]="
+                 isPlayingVoice
+                   ? 'assets/icons/voice-hint.png'
+                   : 'assets/icons/pause.png'
+               " class="w-4 mr-0.5" />
+                </button>
+            </div>
+            <!-- question 4 -->
+            <div *ngIf="activeQuestion === 3"
+                class="questionCard col-span-12 customMid:col-span-8 customMid:mb-44 my-4 sm:my-0">
+                <textarea #q4 [value]="currentAnswer.answer" placeholder="پاسخ سوال شماره 3 را اینجا باید بنویسی"
+                    class="fardamoonTextArea w-full h-28"></textarea>
+                <!-- submit button -->
+                <button (click)="registerCurrentAnswer(q4.value)" class="submitFardamoonForm">
+                    ثبت پاسخ
+                </button>
+                <!-- hint -->
+                <div class="flex items-start gap-x-1">
+                    <img src="assets/fardamoon/images/info2.png" class="w-8" alt="info">
+                    <p class="text-white text-xs text-justify">
+                        بعضی وقتا ممکنه به دلایل مختلف به تصویری که توی ذهنمونه نرسیم مثلاکسی که
+                        خیلی دوست داره پزشک بشه... نتونه بهش برسه... پس حتما باید یه گزینه ی
+                        جایگزین داشته باشی تا مجبور نشی کاری که استعداد و علاقه شو نداری انجام بدی
+                    </p>
+                </div>
+                <!-- voice -->
+                <button (click)="toggleVoice(3)" class="playPauseSound">
+                    پخش صوت راهنما
+                    <img [src]="
+                isPlayingVoice
+                  ? 'assets/icons/voice-hint.png'
+                  : 'assets/icons/pause.png'
+              " class="w-4 mr-0.5" />
+                </button>
+            </div>
+            <!-- ? wooden board -->
+            <!-- wooden board 1 -->
+            <div *ngIf="activeQuestion === 0"
+                class="col-span-12 customMid:col-span-2 self-center customMid:self-end justify-self-center customMid:justify-self-end">
+                <div class="relative">
+                    <img src="assets/fardamoon/images/wooden-board.png" class="w-5 sm:w-7" />
+                    <div [ngStyle]="{ border: 'solid 4px #77481F' }"
+                        class="h-fit w-44 sm:w-56 p-2 bg-[#f5f5f5] absolute top-0 -right-28 rounded">
+                        <!-- card text && next && previous qustions -->
+                        <div class="flex flex-col gap-y-2">
+                            <!-- card text -->
+                            <p class="text-sm sm:text-base font-mikhak text-justify leading-8">
+                                1) داری برای رسیدن به چه شغلی تلاش می کنی؟
+                            </p>
+                            <!-- next && previous qustions -->
+                            <div class="w-full flex justify-between">
+                                <!-- next -->
+                                <button [hidden]="isLastQuestion" (click)="goNextQuestion()"
+                                    class="preNextQuestions">سوال
+                                    بعد</button>
+                                <!-- previous qustions -->
+                                <button [hidden]="isFirstQuestion" (click)="goPreviousQuestion()"
+                                    class="preNextQuestions">سوال
+                                    قبل</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- wooden board 2 -->
+            <div *ngIf="activeQuestion === 1"
+                class="col-span-12 customMid:col-span-2 self-center customMid:self-end justify-self-center customMid:justify-self-end">
+                <div class="relative">
+                    <img src="assets/fardamoon/images/wooden-board.png" class="w-5 sm:w-7" />
+                    <div [ngStyle]="{ border: 'solid 4px #77481F' }"
+                        class="h-fit w-44 sm:w-56 p-2 bg-[#f5f5f5] absolute top-0 -right-28 rounded">
+                        <!-- card text && next && previous qustions -->
+                        <div class="flex flex-col gap-y-2">
+                            <!-- card text -->
+                            <p class="text-sm sm:text-base font-mikhak text-justify leading-8">
+                                2) چرا این شغل را انتخاب کردی؟
+                            </p>
+                            <!-- next && previous qustions -->
+                            <div class="w-full flex justify-between">
+                                <!-- next -->
+                                <button [hidden]="isLastQuestion" (click)="goNextQuestion()"
+                                    class="preNextQuestions">سوال
+                                    بعد</button>
+                                <!-- previous qustions -->
+                                <button [hidden]="isFirstQuestion" (click)="goPreviousQuestion()"
+                                    class="preNextQuestions">سوال
+                                    قبل</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- wooden board 3 -->
+            <div *ngIf="activeQuestion === 2"
+                class="col-span-12 customMid:col-span-2 self-center customMid:self-end justify-self-center customMid:justify-self-end">
+                <div class="relative">
+                    <img src="assets/fardamoon/images/wooden-board.png" class="w-5 sm:w-7" />
+                    <div [ngStyle]="{ border: 'solid 4px #77481F' }"
+                        class="h-fit w-44 sm:w-56 p-2 bg-[#f5f5f5] absolute top-0 -right-28 rounded">
+                        <!-- card text && next && previous qustions -->
+                        <div class="flex flex-col gap-y-2">
+                            <!-- card text -->
+                            <p class="text-sm sm:text-base font-mikhak text-justify leading-8">
+                                3) چه توانایی هایی برای رسیدن به این شغل درخودت می بینی؟
+                            </p>
+                            <!-- next && previous qustions -->
+                            <div class="w-full flex justify-between">
+                                <!-- next -->
+                                <button [hidden]="isLastQuestion" (click)="goNextQuestion()"
+                                    class="preNextQuestions">سوال
+                                    بعد</button>
+                                <!-- previous qustions -->
+                                <button [hidden]="isFirstQuestion" (click)="goPreviousQuestion()"
+                                    class="preNextQuestions">سوال
+                                    قبل</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- wooden board 4 -->
+            <div *ngIf="activeQuestion === 3"
+                class="col-span-12 customMid:col-span-2 self-center customMid:self-end justify-self-center customMid:justify-self-end">
+                <div class="relative">
+                    <img src="assets/fardamoon/images/wooden-board.png" class="w-5 sm:w-7" />
+                    <div [ngStyle]="{ border: 'solid 4px #77481F' }"
+                        class="h-fit w-44 sm:w-56 p-2 bg-[#f5f5f5] absolute top-0 -right-28 rounded">
+                        <!-- card text && next && previous qustions -->
+                        <div class="flex flex-col gap-y-2">
+                            <!-- card text -->
+                            <p class="text-sm sm:text-base font-mikhak text-justify leading-8">
+                                4) اگه به هر دلیلی به شغل مورد نظرت نرسیدی چه گزینه ی دیگه ای
+                                داری؟
+                            </p>
+                            <!-- next && previous qustions -->
+                            <div class="w-full flex justify-between">
+                                <!-- next -->
+                                <button [hidden]="isLastQuestion" (click)="goNextQuestion()"
+                                    class="preNextQuestions">سوال
+                                    بعد</button>
+                                <!-- previous qustions -->
+                                <button [hidden]="isFirstQuestion" (click)="goPreviousQuestion()"
+                                    class="preNextQuestions">سوال
+                                    قبل</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- planet-image -->
+    <div class="absolute bottom-0">
+        <img src="assets/fardamoon/images/half-job-planet.png" class="w-full" />
+    </div>
+    <!-- goBack -->
+    <app-button (click)="goBack()" [icon]="'assets/icons/solar-system.png'" iconClass="w-8"
+        classes="goBack absolute top-4 right-3 z-50"></app-button>
+
+</section>

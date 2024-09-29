@@ -1,0 +1,123 @@
+<header class=" relative px-3 md:px-6 py-1.5 border-b-2 border-newPrimary bg-white">
+  <div class="max-w-screen-2xl xl:container xl:mx-auto flex flex-wrap items-center justify-between">
+    <div class="flex items-center gap-x-1.5 sm:gap-x-4">
+      <!-- logo -->
+      <img src="assets/images/rafiqaneh.jpg" class="logo w-16 rounded-full" alt="rafiqaneh-logo" routerLink="/">
+      <app-nav-items></app-nav-items>
+    </div>
+    <div class="left-header flex items-center gap-x-6">
+      <div class="flex gap-x-1 ">
+        <a href="{{ item.link }}" target="_blank" *ngFor="let item of socialLinks" class="transformUp1sec500">
+          <img src="{{ item.image }}" class="socialLinks-icons w-7 cursor-pointer rounded-full" /></a>
+      </div>
+      <app-button *ngIf="!isAuthenticated" routerLink="/login" title="ورود یا ثبت نام"
+        buttonClass="btn-outlined-primary btn-sm"></app-button>
+      <!-- ? isAuthenticated -->
+      <div *ngIf="isAuthenticated">
+        <button mat-button [matMenuTriggerFor]="menu"
+          class="relative border border-newPrimary px-3 py-1.5 rounded-full flex items-center">
+          <img src="assets/images/navbar/user.png" class="w-5" />
+          <img src="assets/images/navbar/downward-arrow.png" class="w-3 mr-2" />
+        </button>
+        <!-- dropdown -->
+        <mat-menu #menu="matMenu" class="shadow-md rounded-md w-[233px] p-2">
+          <!-- TODO ITEM1 -->
+          <div class="flex flex-col items-center relative">
+            <div class="w-full flex flex-row items-center">
+              <img class="rounded-full w-12 h-12" [src]="avatar" />
+              <span class="text-sm mr-4">{{ firstName }} {{ lastName }}</span>
+            </div>
+            <label for="uploadProfilePic"
+              class="text-xs text-center rounded px-2 py-1 border border-newPrimary font-sansbold w-fit text-newPrimary hover:bg-newPrimary hover:text-white transition-all duration-300 cursor-pointer">بارگذاری
+              تصویر</label>
+            <input #avatarElem id="uploadProfilePic" (change)="avatarChanged($event)" class="hidden" type="file" />
+            <ngx-spinner [fullScreen]="false" name="uploadProfile" type="ball-scale-multiple"></ngx-spinner>
+          </div>
+          <!-- TODO divider -->
+          <hr class="border border-gray-100 my-3 mx-1" />
+          <!-- TODO points -->
+          <div class="flex flex-row items-center w-[85%] mx-auto">
+            <div class="w-4 h-4 bg-newPrimary bg-opacity-40 rounded-full flex flex-col items-center justify-center">
+              <div class="w-2 h-2 bg-newPrimary rounded-full"></div>
+            </div>
+            <p class="text-xs mr-2">
+              <span class="font-sansbold">{{ score }}</span>
+              امتیاز
+            </p>
+          </div>
+          <!-- TODO divider -->
+          <hr class="border border-gray-100 my-3 mx-1" />
+          <!-- TODO completed missions -->
+          <div class="flex flex-row items-center w-[85%] mx-auto">
+            <div class="w-4 h-4 bg-newPrimary bg-opacity-40 rounded-full flex flex-col items-center justify-center">
+              <div class="w-2 h-2 bg-newPrimary rounded-full"></div>
+            </div>
+            <p class="text-xs mr-2">
+              <span class="font-sansbold">{{ completedStationsCount }}</span>
+              مرحله
+            </p>
+          </div>
+          <!-- TODO divider -->
+          <hr class="border border-gray-100 my-3 mx-1" />
+          <!-- TODO edit profile -->
+          <a class="text-xs" [routerLink]="['/register']">
+            <div class="w-full flex flex-col items-center transformUp1sec500">
+              <button class="w-[80%] flex flex-row items-center justify-center cursor-pointer">
+                <img src="assets/images/navbar/profile.png" class="w-5" />
+                <span class="text-xs mr-2">پروفایل</span>
+              </button>
+            </div>
+          </a>
+          <!-- TODO admin panel -->
+          <ng-template [ngIf]="isAdmin">
+            <!-- TODO divider -->
+            <hr class="border border-gray-100 my-3 mx-1" />
+
+            <a class="text-xs" [routerLink]="['/admin-area']">
+              <div class="w-full flex flex-col items-center transformUp1sec500">
+                <button class="w-[80%] flex flex-row items-center justify-center cursor-pointer">
+                  <img src="assets/images/navbar/admin-panel.png" class="w-5" />
+                  <span class="text-xs mr-2">پنل ادمین</span>
+                </button>
+              </div>
+            </a>
+            <!-- <div class="flex flex-col items-center">
+                        <a class="text-xs" [routerLink]="['/admin-area']">پنل ادمین</a>
+                      </div> -->
+          </ng-template>
+
+          <ng-template [ngIf]="isProvinceAdmin">
+            <!-- TODO divider -->
+            <hr class="border border-gray-100 my-3 mx-1" />
+
+            <a class="text-xs" [routerLink]="['/province-panel']">
+              <div class="w-full flex flex-col items-center transformUp1sec500">
+                <button class="w-[80%] flex flex-row items-center justify-center cursor-pointer">
+                  <img src="assets/images/navbar/admin-panel.png" class="w-5" />
+                  <span class="text-xs mr-2">پنل مدیریت استانی</span>
+                </button>
+              </div>
+            </a>
+            <!-- <div class="flex flex-col items-center">
+                        <a class="text-xs" [routerLink]="['/admin-area']">پنل ادمین</a>
+                      </div> -->
+          </ng-template>
+
+          <!-- TODO divider -->
+          <hr class="border border-gray-100 my-3 mx-1" />
+          <!-- TODO sign out -->
+          <div class="w-full flex flex-col items-center transformUp1sec500">
+            <button class="w-[80%] flex flex-row items-center justify-center cursor-pointer" *ngIf="isAuthenticated"
+              (click)="signOut()">
+              <img src="assets/images/navbar/exit.png" class="w-4" />
+              <a class="text-xs mr-2">خروج</a>
+            </button>
+          </div>
+          <!-- TODO divider -->
+          <hr class="border border-gray-100 my-3 mx-1" />
+          <p class="text-xs text-center">نسخه: {{ appVersion }}</p>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</header>

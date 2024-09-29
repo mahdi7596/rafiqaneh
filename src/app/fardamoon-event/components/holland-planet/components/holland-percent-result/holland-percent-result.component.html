@@ -1,0 +1,58 @@
+<section class="vwhSection justify-center py-6 overflow-hidden">
+    <!-- repeated stars -->
+    <app-repeated-stars></app-repeated-stars>
+
+
+    <div class="container grid grid-cols-12 mb-20">
+        <div style="border: solid 1px #8946a687;background-color: rgba(137,70,166,0.2);"
+            class="col-span-12 h-full bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-md z-20">
+            <!-- header -->
+            <div style="border-bottom: solid 1px #8946a638;"
+                class="w-full flex flex-wrap items-center justify-between px-6 md:px-12 py-4 bg-fardamoonPrimary bg-opacity-20 gap-y-3 sm:gap-y-0">
+                <h2 class="flex-1 text-base lg:text-2xl text-surface">
+                    نتیجه آزمون
+                </h2>
+                <h2 style="border: solid 1px #8946a687;"
+                    class="w-fit flex items-center flex-wrap bg-fardamoonPrimary gap-x-0.5 p-2 m-auto rounded text-surface text-xs gap-y-1.5">
+                    درصد شما:
+                    <span class="text-surface font-sansbold text-sm sm:text-base md:text-lg lg:text-xl">
+                        {{percentResult.userPercent}}
+                    </span>
+                </h2>
+            </div>
+            <div class="grid grid-cols-12 justify-center items-center gap-x-3 px-6 md:px-12 pb-8 my-6">
+                <div class="col-span-12 flex flex-col gap-y-8 text-justify leading-loose">
+                    <!-- ! @zatkhahi this image will be changed -->
+                    <img src="assets/fardamoon-event/holland-percent-result/istj.jpg" class="w-56 rounded self-center"
+                        alt="">
+                    <p class="text-sm sm:text-base lg:text-lg text-surface leading-loose">
+                        {{percentResult.resultExplanation}}
+                    </p>
+                    <div class="flex flex-col gap-y-3">
+                        <h3 class="text-base lg:text-xl text-surface">
+                            لازمه ی این مشاغل:
+                        </h3>
+                        <ol
+                            class="flex items-center flex-wrap gap-x-1.5 gap-y-3 text-sm sm:text-base lg:text-lg text-surface leading-loose">
+                            <li *ngFor="let suggestion of percentResult.resultSuggestion"
+                                class="bg-[#8946a687] rounded-full px-3 py-1.5">
+                                {{suggestion}}
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <button (click)="goBack()"
+                class="text-surface  p-3 w-full  bg-gradient-to-r from-fardamoonPrimary to-purple-300">بزن
+                بریم
+                مرحله ی بعد</button>
+
+        </div>
+    </div>
+
+    <!-- planet-image -->
+    <div class=" absolute bottom-0 transform translate-y-24">
+        <img src="assets\fardamoon-event\holland-component\s1-2.png" class="w-full" />
+    </div>
+
+</section>

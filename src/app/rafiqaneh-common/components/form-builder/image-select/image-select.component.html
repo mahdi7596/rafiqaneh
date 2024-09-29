@@ -1,0 +1,13 @@
+<div class="flex flex-row-reverse gap-x-2 justify-between mt-12" *ngIf="options">
+    <div *ngFor="let opt of options" (click)="optionClicked(opt)"
+        class="relative h-fit flex flex-col gap-y-2 items-center cursor-pointer">
+        <img [src]="opt.srcUrl" [alt]="opt.title" [ngClass]="opt.imageClass ?? ''">
+        <p [ngClass]="opt.contentClass ?? 'w-12' " class="text-surface text-[10px] sm:text-sm text-center" *ngIf="opt.title">
+            {{opt.title}}
+        </p>
+        <!-- checkbox button -->
+        <img *ngIf="value == opt.value" src="assets/icons/checked.png"
+            class="w-6 absolute top-0 -left-2 transform -translate-y-3" alt="checkbox">
+    </div>
+</div>
+<!-- [ngClass]="value == opt.value ? 'bg-fardamoonPrimary bg-opacity-10 border-2 ':''" -->

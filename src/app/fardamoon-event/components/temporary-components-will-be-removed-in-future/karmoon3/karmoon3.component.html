@@ -1,0 +1,54 @@
+<section class="vwhSection justify-center py-6">
+    <!-- repeated stars -->
+    <app-repeated-stars></app-repeated-stars>
+    <!-- questionBox && wooden board -->
+
+    <div *ngIf="timeAllowed"
+        class="container questionCard z-50 relative grid grid-cols-12 justify-center items-center gap-x-6 gap-y-6 px-3 sm:px-6 md:px-12 py-8">
+        <div *ngIf="!startGame" class="col-span-12 xl:col-span-8 flex flex-col">
+            <div class="content text-surface">
+                <h2 class="text-surface text-base md:text-lg mb-6">
+                    سلام من راهنمای شما هستم !
+                    امیدوارم که بتوانیم با هم دیگه توی کارمون اتفاقات خیلی خوبی را رقم بزنیم! :)
+                </h2>
+                <div class="text-sm md:text-base flex flex-col gap-y-6">
+                    <p>
+                        به تمامی سوالات با دقت پاسخ دهید. </p>
+                </div>
+            </div>
+            <button (click)="onStartGame()"
+                class="mt-6 self-end bg-fardamoonPrimary hover:bg-opacity-80 px-4 py-2 rounded text-surface text-sm md:text-base">
+                شروع به پاسخ دادن
+            </button>
+        </div>
+        <div *ngIf="!startGame"
+            class="xl:sticky xl:top-0 astronaut-helper col-span-12 xl:col-span-4 order-first xl:order-last flex flex-col justify-center items-center">
+            <img src="assets/images/astronauts.png" class="w-52 sm:w-64 md:w-96" alt="astronauts">
+        </div>
+        <div *ngIf="startGame" class="col-span-12 flex flex-col">
+            <multi-step-form-builder [multiStepForm]="karmoon3SecondYearChallenge"
+                (stepsCompleted)="stepsCompleted($event)"></multi-step-form-builder>
+        </div>
+        <!-- <div *ngIf="karmoon2Progress?.completedAt">
+      <div *ngIf="isKarmoon2Completed(); then karmoon2Completed else karmoon2Waiting"></div>
+      <ng-template #karmoon2Completed>
+        create another form here
+      </ng-template>
+      <ng-template #karmoon2Waiting>
+        زمان ارسال فرم کارمون نرسیده است
+      </ng-template>      
+    </div> -->
+    </div>
+    <div *ngIf="!timeAllowed">
+        <app-timer-countdown [remainedSeconds]="remainedTime"></app-timer-countdown>
+    </div>
+
+    <!-- planet-image -->
+    <div class="absolute bottom-0">
+        <img src="assets/fardamoon/images/half-job-planet.png" class="w-full" />
+    </div>
+    <!-- goBack -->
+    <app-button (click)="goBack()" title="بازگشت" [icon]="'assets/icons/solar-system.png'" iconClass="w-8"
+        classes="goBack absolute top-4 left-3 z-50 text-xs flex gap-x-0.5 hover:text-white"></app-button>
+
+</section>

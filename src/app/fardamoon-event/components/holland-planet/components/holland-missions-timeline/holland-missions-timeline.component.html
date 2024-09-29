@@ -1,0 +1,16 @@
+<app-custom-timeline [explanation]="explanation" [missions]="hollandMissions"
+    planetImage="assets/fardamoon-event/holland-component/s1-2.png"
+    planetClass="absolute bottom-0 transform translate-y-24" shazdeImage="assets/fardamoon-event/shazde-kochlo.png"
+    shazdeClass="absolute w-20 top-8 right-52 lg:left-0 lg:top-52 lg:w-32"></app-custom-timeline>
+
+<img (click)="goBack()" src="assets/fardamoon-event/back-route.png" class="absolute left-2 top-2 w-9" alt="">
+<audio hidden class="hidden"  id="player" src="assets/new-voices/holland.mp3" autoplay></audio>
+
+<div class="">
+    <button *ngIf="showAudio"  onclick="document.getElementById('player').pause()" (click)="onShow()">
+        <img src="assets/fardamoon-event/audio.png" class="absolute right-2 top-2 w-9" alt="">
+    </button> 
+    <button *ngIf="!showAudio" onclick="document.getElementById('player').play()" (click)="onShow()" >
+        <img src="assets/fardamoon-event/no-audio.png" class="absolute right-2 top-2 w-9" alt="">
+    </button> 
+</div>

@@ -1,0 +1,56 @@
+<mat-card *ngIf="user">
+    <mat-card-header>
+        <mat-card-title>مشخصات کاربر</mat-card-title>
+    </mat-card-header>
+    <!-- <mat-card-subtitle>End</mat-card-subtitle> -->
+    <img class="profile-image" width="300" *ngIf="user.avatar" mat-card-image [src]="avatar(user.avatar)" alt="آواتار کاربر">
+    <mat-card-content >
+        <div class="flex flex-row">
+            <div class="">نام: </div>
+            <div class="text-base font-bold mx-2">{{user.firstName}} {{user.lastName}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">کد ملی: </div>
+            <div class="text-base font-bold mx-2">{{user.nationalCode}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">موبایل: </div>
+            <div class="text-base font-bold mx-2">{{user.mobileNumber}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">
+                تاریخ تولد: </div>
+            <div class="text-base font-bold mx-2">{{user.birthDate}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">
+                تاریخ ثبت کاربر: </div>
+            <div class="text-base font-bold mx-2">{{formatDate(user.createdAt)}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">
+               استان: </div>
+            <div class="text-base font-bold mx-2">{{province(user.province)}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">
+                موبایل تایید شده: </div>
+            <div class="text-base font-bold mx-2">{{user.mobileConfirmed?'بله':'خیر'}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">
+                جنسیت: </div>
+            <div class="text-base font-bold mx-2">{{user.gender == 'male'?'آقا' : 'خانم'}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">
+                محل صدور: </div>
+            <div class="text-base font-bold mx-2">{{user.issuancePlace}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">
+                نام پدر: </div>
+            <div class="text-base font-bold mx-2">{{user.fatherName}}</div>
+        </div>
+    </mat-card-content>
+</mat-card>

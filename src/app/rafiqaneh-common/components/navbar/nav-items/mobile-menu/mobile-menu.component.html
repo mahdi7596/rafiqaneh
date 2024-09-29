@@ -1,0 +1,14 @@
+<img (click)="hamburgerMenu=!hamburgerMenu"
+    [src]="hamburgerMenu ? 'assets/images/navbar/close-menu.png':'assets/images/navbar/menu.png'"
+    class="hamburger-menu sm:hidden w-6" alt="menu">
+
+<div [ngClass]="hamburgerMenu ? 'opacity-100':'opacity-0'"
+    class="w-56 p-3 bg-[#FAFAFA] border border-surfaceBorder rounded-sm absolute bottom-0 transform translate-y-20 z-10 transition-all duration-700">
+    <ul class="flex flex-col items-start gap-y-4">
+        <li *ngFor="let navItem of navItems">
+            <a [routerLink]="navItem.link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                #rla="routerLinkActive" [ngClass]="rla.isActive ? 'text-newPrimary' : 'text-neutrals0'"
+                class="text-sm">{{navItem.title}}</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,38 @@
+<mat-card *ngIf="ticket">
+    <mat-card-header>
+        <mat-card-title>تیکت فردامون</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="flex flex-row">
+            <div class="">امتیاز: </div>
+            <div class="text-base font-bold mx-2">{{ticket.score}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">شماره بلیط دستی: </div>
+            <div class="text-base font-bold mx-2">{{ticket.manuakTicket}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">شماره بلیط اتوماتیک: </div>
+            <div class="text-base font-bold mx-2">{{ticket.ticketNumber}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">
+                تاریخ ثبت فردامون: </div>
+            <div class="text-base font-bold mx-2">{{formatDate(ticket.createdAt)}}</div>
+        </div>
+        <div class="flex flex-row">
+            <div class="">
+                سوالات پاسخ داده شده: </div>
+            <div *ngIf="ticket.completedStations" class="text-base font-bold mx-2">
+                <ul>
+                    <li *ngFor="let s of stations(ticket.completedStations)">
+                        {{s.name}}: {{s.score}}
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="!ticket.completedStations" class="text-base font-bold mx-2">0
+            </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>

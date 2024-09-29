@@ -1,0 +1,184 @@
+<header class="bg-white border-b-4 border-mainColor sticky top-0 z-50">
+    <nav class="px-5 md:px-0 container mx-auto flex flex-row items-center py-2">
+        <!-- ? Logo && MenuItems -->
+        <div class="flex flex-row items-center flex-1">
+            <!-- * logo -->
+            <a [routerLink]="['/']">
+                <img src="assets/images/rafiqaneh.jpg" class="w-16 rounded-full" alt="rafiqaneh-logo" />
+            </a>
+            <!-- * Hamburger Icon -->
+            <img (click)="openMenu()" src="assets/icons/hamburger-menu.png" alt="hamburger-menu"
+                class="block hamburger md:hidden mr-5 w-5" />
+            <!-- * menu items -->
+            <ul class="hidden md:flex flex-row items-center gap-x-6 mr-7">
+                <a [routerLink]="menu.link" class="relative" *ngFor="let menu of menuItems">
+                    <li class="text-xs text-[#62666d] hover:text-mainColor transition duration-100 cursor-pointer">
+                        {{ menu.title }}
+                    </li>
+                    <span *ngIf="menu.badge"
+                        class="absolute top-0 left-0 transform -translate-y-5 -translate-x-5 px-1 py-0.5 bg-mainColor bg-opacity-20 text-mainColor font-sansbold text-xs rounded">جدید</span>
+                </a>
+                <a class="relative" *ngIf="isAuthenticated" [routerLink]="['/register']">
+                    <li class="text-xs text-[#62666d] hover:text-mainColor transition duration-100 cursor-pointer">
+                        پروفایل کاربری
+                    </li>
+                </a>
+            </ul>
+        </div>
+        <!-- ? login/register dropdown social icons -->
+        <div class="flex flex-row items-center">
+            <!-- ?social icons -->
+            <!-- <div class="flex flex-row gap-x-1 ml-2 sm:ml-4">
+        <a
+          href="{{ item.link }}"
+          target="_blank"
+          *ngFor="let item of socialLinks"
+          class="transformUp1sec500"
+        >
+          <img
+            matTooltip="rafiqaneh@"
+            matTooltipPosition="above"
+            src="{{ item.image }}"
+            class="w-7 cursor-pointer"
+        /></a>
+      </div> -->
+            <!-- ? login Button -->
+            <button *ngIf="!isAuthenticated"
+                class="flex flex-row items-center p-2 text-white font-sansbold bg-mainColor hover:bg-faslenoMainColor opacity-80 rounded transition duration-300 cursor-pointer">
+                <a class="text-xs" routerLink="/login">ورود یا ثبت نام</a>
+                <img src="assets/icons/profile1.png" class="w-6 mr-1" alt="login" />
+            </button>
+            <!-- ? drowdown -->
+            <button class="border border-mainColor px-3 py-1.5 rounded flex flex-row items-center cursor-pointer"
+                *ngIf="isAuthenticated" mat-button [matMenuTriggerFor]="menu">
+                <img src="assets/images/navbar/user.png" class="w-5" />
+                <img src="assets/images/navbar/downward-arrow.png" class="w-3 mr-2" />
+            </button>
+            <!-- ? drowdown items -->
+            <mat-menu #menu="matMenu" class="shadow-md rounded-md w-[233px] p-2">
+                <!-- TODO ITEM1 -->
+                <div class="flex flex-col items-center relative">
+                    <div class="w-full flex flex-row items-center">
+                        <img class="rounded-full w-12 h-12" [src]="avatar" />
+                        <span class="text-sm mr-4">{{ firstName }} {{ lastName }}</span>
+                    </div>
+                    <label for="uploadProfilePic"
+                        class="text-xs text-center rounded px-2 py-1 border border-mainColor font-sansbold w-fit text-mainColor hover:bg-mainColor hover:text-white transition-all duration-300 cursor-pointer">بارگذاری
+                        تصویر</label>
+                    <input #avatarElem id="uploadProfilePic" (change)="avatarChanged($event)" class="hidden"
+                        type="file" />
+                    <ngx-spinner [fullScreen]="false" name="uploadProfile" type="ball-scale-multiple"></ngx-spinner>
+                </div>
+                <!-- TODO divider -->
+                <hr class="border border-gray-100 my-3 mx-1" />
+                <!-- TODO points -->
+                <div class="flex flex-row items-center w-[85%] mx-auto">
+                    <div
+                        class="w-4 h-4 bg-mainColor bg-opacity-40 rounded-full flex flex-col items-center justify-center">
+                        <div class="w-2 h-2 bg-mainColor rounded-full"></div>
+                    </div>
+                    <p class="text-xs mr-2">
+                        <span class="font-sansbold">{{ score }}</span>
+                        امتیاز
+                    </p>
+                </div>
+                <!-- TODO divider -->
+                <hr class="border border-gray-100 my-3 mx-1" />
+                <!-- TODO completed missions -->
+                <div class="flex flex-row items-center w-[85%] mx-auto">
+                    <div
+                        class="w-4 h-4 bg-mainColor bg-opacity-40 rounded-full flex flex-col items-center justify-center">
+                        <div class="w-2 h-2 bg-mainColor rounded-full"></div>
+                    </div>
+                    <p class="text-xs mr-2">
+                        <span class="font-sansbold">{{ completedStationsCount }}</span>
+                        مرحله
+                    </p>
+                </div>
+                <!-- TODO divider -->
+                <hr class="border border-gray-100 my-3 mx-1" />
+                <!-- TODO edit profile -->
+                <a class="text-xs" [routerLink]="['/register']">
+                    <div class="w-full flex flex-col items-center transformUp1sec500">
+                        <button class="w-[80%] flex flex-row items-center justify-center cursor-pointer">
+                            <img src="assets/images/navbar/profile.png" class="w-5" />
+                            <span class="text-xs mr-2">پروفایل</span>
+                        </button>
+                    </div>
+                </a>
+                <!-- TODO admin panel -->
+                <ng-template [ngIf]="isAdmin">
+                    <!-- TODO divider -->
+                    <hr class="border border-gray-100 my-3 mx-1" />
+
+                    <a class="text-xs" [routerLink]="['/admin-area']">
+                        <div class="w-full flex flex-col items-center transformUp1sec500">
+                            <button class="w-[80%] flex flex-row items-center justify-center cursor-pointer">
+                                <img src="assets/images/navbar/admin-panel.png" class="w-5" />
+                                <span class="text-xs mr-2">پنل ادمین</span>
+                            </button>
+                        </div>
+                    </a>
+                    <!-- <div class="flex flex-col items-center">
+            <a class="text-xs" [routerLink]="['/admin-area']">پنل ادمین</a>
+          </div> -->
+                </ng-template>
+
+                <ng-template [ngIf]="isProvinceAdmin">
+                    <!-- TODO divider -->
+                    <hr class="border border-gray-100 my-3 mx-1" />
+
+                    <a class="text-xs" [routerLink]="['/province-panel']">
+                        <div class="w-full flex flex-col items-center transformUp1sec500">
+                            <button class="w-[80%] flex flex-row items-center justify-center cursor-pointer">
+                                <img src="assets/images/navbar/admin-panel.png" class="w-5" />
+                                <span class="text-xs mr-2">پنل مدیریت استانی</span>
+                            </button>
+                        </div>
+                    </a>
+                    <!-- <div class="flex flex-col items-center">
+            <a class="text-xs" [routerLink]="['/admin-area']">پنل ادمین</a>
+          </div> -->
+                </ng-template>
+
+                <!-- TODO divider -->
+                <hr class="border border-gray-100 my-3 mx-1" />
+                <!-- TODO sign out -->
+                <div class="w-full flex flex-col items-center transformUp1sec500">
+                    <button class="w-[80%] flex flex-row items-center justify-center cursor-pointer"
+                        *ngIf="isAuthenticated" (click)="signOut()">
+                        <img src="assets/images/navbar/exit.png" class="w-4" />
+                        <a class="text-xs mr-2">خروج</a>
+                    </button>
+                </div>
+                <!-- TODO divider -->
+                <hr class="border border-gray-100 my-3 mx-1" />
+                <p class="text-xs text-center">نسخه: {{ appVersion }}</p>
+            </mat-menu>
+        </div>
+        <!-- ? Mobile Menu -->
+        <div class="flex flex-col md:hidden" [ngClass]="menuVariable === true ? 'flex' : 'hidden'">
+            <div id="menu"
+                class="z-10 absolute flex flex-col bg-white border-r-2 border-b-2 border-l-2 border-gray-300 items-center self-end py-8 mt-10 space-y-6 sm:w-auto sm:self-center left-6 right-6">
+                <ul *ngFor="let menu of menuItems" class="flex flex-col items-center gap-x-4 mr-7">
+                    <a [routerLink]="menu.link" class="relative">
+                        <li class="text-sm text-[#62666d] hover:text-mainColor transition duration-100 cursor-pointer">
+                            {{ menu.title }}
+                        </li>
+                        <span *ngIf="menu.badge"
+                            class="absolute top-0 left-0 transform -translate-y-3 -translate-x-8 px-1 py-0.5 bg-mainColor bg-opacity-20 text-mainColor font-sansbold text-xs rounded">جدید</span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- 
+<button
+class="flex flex-row items-center p-2 text-white font-sansbold bg-mainColor hover:bg-faslenoMainColor opacity-80 rounded transition duration-300 cursor-pointer"
+*ngIf="isAuthenticated"
+(click)="signOut()"
+>
+<a class="text-xs">خروج از سامانه</a>
+</button> -->

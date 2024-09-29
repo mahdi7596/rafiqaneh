@@ -1,0 +1,32 @@
+<!-- <dp-date-picker 
+   dir="rtl"
+   [(ngModel)]="dateObject"
+   mode="day"
+   placeholder="تاریخ"
+   theme="dp-material"
+   [config]="config"
+   >
+ </dp-date-picker> -->
+<!-- <input
+    class="w-full align-start self-start p-2 text-xs sm:text-sm bg-gray-100 border border-mainGray rounded focus:bg-transparent focus:outline-mainColor"
+    placeholder="تاریخ تولد"
+    type="text"
+
+  /> -->
+
+<div class="date-wrapper">
+  <input mdInput [placeholder]="placeholder"
+    class="w-full p-2 text-xs sm:text-sm bg-gray-100 border border-mainGray rounded focus:bg-transparent focus:outline-mainColor"
+    name="someName" (onChange)="changed($event)" [(ngModel)]="dateObject" [dpDayPicker]="dvConfig" theme="dp-material"
+    attachTo=".date-wrapper" />
+</div>
+
+<!-- <ng-persian-datepicker
+  [timeEnable]="false"
+  [uiTodayBtnEnable]="false"
+  [uiHideAfterSelectDate]="true"
+  dateFormat="jYYYY/jMM/jDD"
+  [dateInitValue]="false"
+>
+  <input type="text" class="border p-2" formControlName="birthDate" />
+</ng-persian-datepicker> -->

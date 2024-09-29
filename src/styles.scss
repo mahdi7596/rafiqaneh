@@ -1,0 +1,197 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "commonStyles/repeatedBackground";
+@import "commonStyles/fardamoon";
+@import "commonStyles/glassmorphism";
+
+$mainColor: #f67a2a;
+$fardamoonPrimary: #8946a6;
+$faslenoMainColor: #e64e29;
+$nahalMain: #37b2ad;
+
+//  font family
+@layer base {
+  @font-face {
+    font-family: "exblack-yekan";
+    src: url("assets/fonts/iranyekan/iranyekanwebextrablackfanum.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "black-yekan";
+    src: url("assets/fonts/iranyekan/iranyekanwebblackfanum.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "exbold-yekan";
+    src: url("assets/fonts/iranyekan/iranyekanwebextraboldfanum.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "bold-yekan";
+    src: url("assets/fonts/iranyekan/iranyekanwebboldfanum.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "med-yekan";
+    src: url("assets/fonts/iranyekan/iranyekanwebmediumfanum.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "yekan";
+    src: url("assets/fonts/iranyekan/iranyekanwebregularfanum.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "light-yekan";
+    src: url("assets/fonts/iranyekan/iranyekanweblightfanum.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "thin-yekan";
+    src: url("assets/fonts/iranyekan/iranyekanwebthinfanum.woff") format("woff");
+  }
+}
+
+@layer components {
+
+  // * usable classes
+  // ? flex
+  .flexRow {
+    @apply flex flex-wrap items-center;
+  }
+
+  .flexCol {
+    @apply flex flex-col;
+  }
+
+  // ? hover transformUp
+  .transformUp1sec500 {
+    @apply transition-all duration-500 transform hover:-translate-y-1;
+  }
+
+  .transitionStyle1 {
+    @apply transition-all duration-200 ease-linear;
+  }
+
+  // ? buttons
+  .threeDbutton {
+    @apply rounded text-white md:text-sm p-2 border-b-4 border-faslenoSecondaryColor bg-[#EE5A24];
+  }
+
+  // ? black hoverEffect
+  .darkEffectParent {
+    @apply bg-black rounded-md cursor-pointer;
+  }
+
+  .darkEffectChild {
+    @apply opacity-80 hover:opacity-100 transition duration-300 rounded-md;
+  }
+
+  // ! IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP
+  // TODO Landing Page
+  // ! IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP
+  // TODO fasleNo Project
+  // * hero-section component
+  // subtitle
+  .poster-subtitle {
+    @apply font-sansbold text-base text-faslenoMainColor opacity-0 transform translate-x-[200px];
+  }
+
+  // * header component
+  .nav-li {
+    @apply text-faslenoMainColor text-sm transition ease-in duration-300;
+  }
+
+  .nav-li:hover {
+    @apply p-1 rounded transform -translate-y-1 hover:bg-white hover:text-faslenoSecondaryColor;
+  }
+
+  .hover-underline {
+    @apply h-0.5 mt-1 bg-gradient-to-r from-faslenoSecondaryColor to-faslenoMainColor scale-x-0 group-hover:scale-100 transition-transform origin-right rounded-full duration-700 ease-in-out;
+  }
+
+  // *form component
+  // ? angular material mat hint
+  .matHint {
+    @apply bg-faslenoMainColor text-white text-xs py-0.5 px-1 rounded leading-5;
+  }
+
+  // ! IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP IMP
+  // TODO Fardamoon Project
+  .vwhSection {
+    @apply relative w-screen min-h-screen h-full flex flex-col items-center px-4;
+  }
+
+  // buttons
+  .submitFardamoonForm {
+    @apply w-fit mx-auto px-4 py-2 text-xs sm:text-sm bg-white hover:bg-fardamoonPrimary hover:text-white rounded-sm;
+  }
+
+  .goBack {
+    @apply border border-fardamoonPrimary flex items-center px-1.5 py-1 bg-white hover:bg-fardamoonPrimary rounded-full transitionStyle1;
+  }
+
+  .playPausBtn {
+    @apply bg-fardamoonPrimary px-1.5 py-1 border-2 border-white rounded-full;
+  }
+
+  .playPauseSound {
+    @apply self-end flex items-center gap-x-1 px-3 py-0.5 bg-fardamoonPrimary bg-opacity-60 hover:bg-opacity-90 text-white text-xs sm:text-sm border-2 border-fardamoonPrimary rounded-full
+  }
+
+  .preNextQuestions {
+    @apply text-xs px-1 py-0.5 hover:bg-fardamoonPrimary hover:text-white border border-[#77481F] rounded-sm;
+  }
+
+  .inproc-cta-enabled-button {
+    @apply px-2 py-1.5 hover:bg-opacity-80 text-surface rounded-sm shadow-sm hover:shadow-md focus:outline-none cursor-pointer;
+  }
+
+  .inproc-cta-disabled-button {
+    @apply disabled:bg-opacity-10 disabled:hover:bg-opacity-10 disabled:hover:shadow-none disabled:cursor-not-allowed;
+  }
+
+  .cta-fardamoon {
+    @apply bg-fardamoonPrimary inproc-cta-enabled-button inproc-cta-disabled-button;
+  }
+
+  // cards
+  .questionCard {
+    @apply min-h-fit customMid:min-h-[444px] flex flex-col gap-y-3 p-4 bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100;
+  }
+
+  // text-area inside solar system
+  .fardamoonTextArea {
+    @apply bg-transparent px-4 py-2 text-sm text-white bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 focus:border-gray-100 focus:ring-gray-100 focus:outline-none focus:ring focus:ring-opacity-20 rounded-sm;
+  }
+}
+
+
+.info-snackbar {
+  background: #2196f3;
+}
+
+.error-snackbar {
+  background: #f3214f;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.mat-tooltip {
+  font-family: iransans !important;
+  font-weight: bold;
+  background-color: #fb6068;
+}
+
+.mat-slider-horizontal .mat-slider-wrapper {
+  background-color: #fff !important;
+}

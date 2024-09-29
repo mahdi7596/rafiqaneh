@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+}
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.mat-raised-button {
+  margin-right: 2px;
+}
+/*# sourceMappingURL=users.component.css.map */

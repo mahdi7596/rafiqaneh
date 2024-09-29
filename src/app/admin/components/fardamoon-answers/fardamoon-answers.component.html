@@ -1,0 +1,20 @@
+<div *ngIf="user">
+    <div class="text-lg font-bold text-center rounded m-2 p-2 bg-white">{{user.firstName}} {{user.lastName}}</div>
+</div>
+<mat-accordion *ngIf="answers" class="example-headers-align" multi>
+    <mat-expansion-panel [expanded]="true" *ngFor="let a of answers">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h1 class="text-lg font-bold text-center">{{station(a.station)}}</h1>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="flex flex-row" *ngFor="let q of a.answers">
+            <div class="">سوال {{q.question+1}}: </div>
+            <div class="text-base font-bold mx-2">{{q.answer}}</div>
+            <div *ngIf="q.answerOptions" class="text-base font-bold mx-2">
+                <span>(گزینه های انتخاب شده:) </span>
+                {{q.answerOptions}}</div>
+                <img width="200" *ngFor="let o of getOptions(q)" [src]="o" [alt]="o" />
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,40 @@
+@import "../../../../styles";
+
+.btn-sm {
+    @apply py-1.5 px-5;
+}
+
+.btn-md {
+    @apply py-2.5 px-8;
+}
+
+.btn {
+    @apply border rounded-full shadow-sm transition-all duration-75 ease-in-out font-medYekan;
+}
+
+.disabled-btn {
+    @apply disabled:bg-opacity-60 disabled:shadow-none disabled:cursor-not-allowed;
+}
+
+.btn-primary {
+    @apply bg-newPrimary hover:bg-[#d3434a] text-white border-newPrimary;
+}
+
+.btn-outlined-primary {
+    @apply bg-white hover:bg-newPrimary text-newPrimary hover:text-white border-newPrimary;
+}
+
+.btn-tertiary {
+    @apply bg-[#FAFAFA] hover:bg-white border-surfaceBorder;
+}
+
+.btn-outlined-tertiary {
+    @apply bg-[#ffffff10] hover:bg-[#ffffff30] text-white border-white;
+}
+
+.btn-primary,
+.btn-outlined-primary,
+.btn-tertiary,
+.btn-outlined-tertiary {
+    @apply btn disabled-btn;
+}

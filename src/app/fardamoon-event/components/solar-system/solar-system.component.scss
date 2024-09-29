@@ -1,0 +1,380 @@
+@import "../../../../styles";
+
+.inactive-station {
+  filter: grayscale(100%);
+}
+
+
+
+.shaazdehKocholo {
+  position: absolute;
+  animation-name: astro2;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  width: 384px;
+}
+
+@keyframes astro2 {
+  0% {
+    top: 40%;
+  }
+
+  50% {
+    top: 45%;
+  }
+
+  100% {
+    top: 40%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.garnerPlanet {
+  width: 400px;
+}
+
+.hollandPlanet,
+.mbtiPlanet {
+  width: 300px;
+}
+
+.hollandPlanet,
+.mbtiPlanet,
+.garnerPlanet,
+.fardamoonPlanet {
+  z-index: 10;
+}
+
+.fardamoonPlanetImg {
+  width: 333px;
+}
+
+.hollandPlanet {
+  right: 7%;
+  top: 3%;
+}
+
+.mbtiPlanet {
+  top: 4%;
+  left: 30%;
+}
+
+.garnerPlanet {
+  right: 10%;
+  bottom: 4%;
+}
+
+.fardamoonPlanet {
+  left: 2%;
+  bottom: 3%;
+}
+
+@media (max-width: 1400px) {
+  .garnerPlanet {
+    width: 350px;
+  }
+
+  .hollandPlanet,
+  .mbtiPlanet {
+    width: 300px;
+  }
+
+  .fardamoonPlanetImg {
+    width: 333px;
+  }
+
+  .hollandPlanet {
+    right: 7%;
+    top: 3%;
+  }
+
+  .mbtiPlanet {
+    top: 4%;
+    left: 30%;
+  }
+
+  .garnerPlanet {
+    right: 10%;
+    bottom: 4%;
+  }
+
+  .fardamoonPlanet {
+    left: 2%;
+    bottom: 3%;
+  }
+}
+
+@media (max-width: 1207px) {
+  .mbtiPlanet {
+    top: 9%;
+  }
+
+
+
+
+  .adernalinePlanet {
+    left: 23%;
+    bottom: 5%;
+  }
+}
+
+@media (max-width: 1130px) {
+  .garnerPlanet {
+    width: 320px;
+  }
+
+  .hollandPlanet,
+  .mbtiPlanet {
+    width: 270px;
+  }
+
+  .fardamoonPlanetImg {
+    width: 200px;
+  }
+
+  .hollandPlanet {
+    right: 7%;
+    top: 3%;
+  }
+
+  .mbtiPlanet {
+    top: 4%;
+    left: 20%;
+  }
+
+  .garnerPlanet {
+    right: 2%;
+    bottom: 4%;
+  }
+
+  .fardamoonPlanet {
+    left: 7%;
+    bottom: 3%;
+  }
+}
+
+@media (max-width: 950px) {
+  .garnerPlanet {
+    width: 300px;
+  }
+
+  .hollandPlanet,
+  .mbtiPlanet {
+    width: 270px;
+  }
+
+  .fardamoonPlanetImg {
+    width: 200px;
+  }
+
+  .hollandPlanet {
+    right: 7%;
+    top: 3%;
+  }
+
+  .mbtiPlanet {
+    top: 4%;
+    left: 20%;
+  }
+
+  .garnerPlanet {
+    right: 2%;
+    bottom: 4%;
+  }
+
+  .fardamoonPlanet {
+    left: 7%;
+    bottom: 3%;
+  }
+
+  // .shaazdehKocholo {
+  //   width: 270px;
+  // }
+}
+
+@media (max-width: 750px) {
+  .garnerPlanet {
+    width: 220px;
+  }
+
+  .hollandPlanet,
+  .mbtiPlanet {
+    width: 200px;
+  }
+
+  .fardamoonPlanetImg {
+    width: 150px;
+  }
+
+  .hollandPlanet {
+    right: 7%;
+    top: 3%;
+  }
+
+  .mbtiPlanet {
+    top: 4%;
+    left: 20%;
+  }
+
+  .garnerPlanet {
+    right: 2%;
+    bottom: 4%;
+  }
+
+  .fardamoonPlanet {
+    left: 7%;
+    bottom: 3%;
+  }
+
+  
+}
+
+@media (max-width: 620px) {
+  .garnerPlanet {
+    width: 220px;
+  }
+
+  .hollandPlanet,
+  .mbtiPlanet {
+    width: 200px;
+  }
+
+  .fardamoonPlanetImg {
+    width: 150px;
+  }
+
+  .hollandPlanet {
+    right: 7%;
+    top: 3%;
+  }
+
+  .mbtiPlanet {
+    top: 4%;
+    left: 5%;
+  }
+
+  .garnerPlanet {
+    right: 2%;
+    bottom: 4%;
+  }
+
+  .fardamoonPlanet {
+    left: 7%;
+    bottom: 3%;
+  }
+
+
+}
+
+@media (max-width: 520px) {
+  .hollandPlanet {
+    // width: 196px;
+    right: 4%;
+  }
+
+  .mbtiPlanet {
+    // width: 165px;
+    top: 15%;
+    right: 60%;
+  }
+
+  .garnerPlanet {
+    // width: 144px;
+    // top: 44%;
+    right: 2%;
+  }
+
+  .adernalinePlanet {
+    // width: 222px;
+    left: 10%;
+    bottom: 2%;
+  }
+
+  .fardamoonPlanet {
+    bottom: 10%;
+  }
+}
+
+@media (max-width: 444px) {
+  .garnerPlanet {
+    width: 200px;
+  }
+
+  .hollandPlanet,
+  .mbtiPlanet {
+    width: 160px;
+  }
+
+  .fardamoonPlanetImg {
+    width: 150px;
+  }
+
+  .hollandPlanet {
+    right: 7%;
+    top: 3%;
+  }
+
+  .mbtiPlanet {
+    top: 15%;
+    left: 5%;
+  }
+
+  .garnerPlanet {
+    right: 2%;
+    bottom: 15%;
+  }
+
+  .fardamoonPlanet {
+    left: 7%;
+    bottom: 3%;
+  }
+
+ 
+}
+
+@media (max-width: 380px) {
+  .garnerPlanet {
+    width: 200px;
+  }
+
+  .hollandPlanet,
+  .mbtiPlanet {
+    width: 130px;
+  }
+
+  .fardamoonPlanetImg {
+    width: 150px;
+  }
+
+  .hollandPlanet {
+    right: 7%;
+    top: 3%;
+  }
+
+  .mbtiPlanet {
+    top: 15%;
+    left: 5%;
+  }
+
+  .garnerPlanet {
+    right: 2%;
+    bottom: 15%;
+  }
+
+  .fardamoonPlanet {
+    left: 7%;
+    bottom: 3%;
+  }
+  .shaazdehKocholo {
+      width: 250px;
+    }
+}

@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<section class="repeatedPattern h-screen flex flex-col justify-center items-center px-5 md:px-0">
+  <div
+    class="repeatedBg py-4 md:py-0 container mx-auto flex flex-col-reverse md:flex-row items-center justify-center border border-mainGray rounded-lg">
+    <!-- right -->
+    <div class="flex-1 flexCol items-center justify-around my-5">
+      <img src="assets/images/rafiqaneh.jpg" class="w-32 rounded-full" alt="logo" />
+      <div class="w-[90%] md:w-[80%] flexCol mt-7">
+        <p class="text-sm sm:text-base text-mainBlack text-justify leading-6">
+          کد
+          <span class="text-newPrimary font-sansbold">6 رقمی</span>
+          ارسال شده به شماره موبایل
+          <span class="text-newPrimary font-sansbold">{{ mobileNumber }}</span>
+          را وارد نمایید.
+        </p>
+        <!-- input field -->
+        <div class="w-full flex   mt-7">
+          <div class="flex-1">
+            <input [(ngModel)]="password" (keyup.enter)="submit()" type="tel"
+              class="w-full p-2 text-xs sm:text-sm border border-mainGray rounded focus:outline-newPrimary"
+              placeholder="کد ارسال شده " />
+          </div>
+          <!-- resend -->
+          <button (click)="resend()" [disabled]="!canResend"
+            class="min-w-fit sm:w-32 mr-5 p-2 text-sm text-newPrimary border border-newPrimary font-sansbold transition duration-300 ease-in-out rounded"
+            [ngClass]="
+              canResend
+                ? ' bg-white hover:border-dashed hover:border-white hover:text-white hover:bg-newPrimary'
+                : 'bg-dark'
+            ">
+            ارسال مجدد
+            {{ timeToResend > 0 ? "(" + timeToResend + " ثانیه)" : "" }}
+          </button>
+        </div>
+        <!-- divider -->
+        <hr class="my-7 border border-dashed border-mainGray" />
+        <!-- continue -->
+        <button (click)="submit()"
+          class="w-full p-3 bg-newPrimary hover:bg-white text-sm sm:text-base text-white hover:text-newPrimary border hover:border-newPrimary font-sansbold transition duration-300 ease-out rounded">
+          ورود به سامانه
+        </button>
+        <!-- wrong number -->
+        <div class="flexRow mt-4 self-end text-xs text-mainBlack">
+          <p>شماره خود را اشتباه وارد کردید؟</p>
+          <a [routerLink]="['..', 'login']"
+            class="mr-2 p-2 hover:bg-newPrimary text-xs text-newPrimary hover:text-white transition duration-300 ease-out rounded-2xl font-sansbold">اصلاح
+            شماره تلفن</a>
+        </div>
+      </div>
+    </div>
+    <!-- left -->
+    <div class="hidden md:flex flex-1 flex-col items-center justify-center rounded md:rounded-tl-lg md:rounded-tb-lg">
+      <!-- image -->
+      <img src="assets/images/rafiqaneh.jpg" class="rounded md:rounded-tl-lg md:rounded-bl-lg w-72 md:w-full" alt="" />
+    </div>
+  </div>
+</section>

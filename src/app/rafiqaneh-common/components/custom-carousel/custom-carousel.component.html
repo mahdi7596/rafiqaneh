@@ -1,0 +1,22 @@
+<div *ngIf="carouselItems && carouselItems.length > 0" class="relative w-full">
+    <div *ngFor="let item of carouselItems; let i = index" class="slide h-full inset-0"
+        [ngClass]="selectedIndex === i ? 'opacity-100':'absolute opacity-0'">
+        <img [src]="item.src" class="" [alt]="item.alt" class=" border border-surfaceBorder rounded object-contain">
+        <div *ngIf="indicators"
+            class="flex items-center gap-x-3 absolute bottom-6 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+            <span *ngFor="let dot of carouselItems; let i =index" (click)="selectedImage(i)"
+                [ngClass]="selectedIndex === i ? 'bg-surface':'bg-gray-400 hover:bg-surface'"
+                class="w-3 h-3 rounded-full transition-all duration-700 cursor-pointer"></span>
+        </div>
+        <button *ngIf="controls" (click)="onPrevClick()"
+            class="w-5 h-5 p-3.5 flex flex-col items-center justify-center bg-surfaceBorder rounded-full absolute top-1/2 left-6">
+            <span
+                class="inprocicon-arrow-down text-lg text-surfaceLightText hover:text-newSurfaceText  transition-all duration-100 rotate-90"></span>
+        </button>
+        <button *ngIf="controls" (click)="onNextClick()"
+            class="w-5 h-5 p-3.5 flex flex-col items-center justify-center bg-surfaceBorder rounded-full absolute top-1/2 right-6">
+            <span
+                class="inprocicon-arrow-down text-lg text-surfaceLightText hover:text-newSurfaceText  transition-all duration-100 -rotate-90"></span>
+        </button>
+    </div>
+</div>

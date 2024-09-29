@@ -1,0 +1,143 @@
+<section class="vwhSection justify-center py-6">
+    <!-- repeated stars -->
+    <app-repeated-stars></app-repeated-stars>
+
+
+    <div class="container grid grid-cols-12">
+        <div style="border: solid 1px #8946a687;background-color: rgba(137,70,166,0.2);"
+            class="col-span-12 h-full bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-md z-20">
+            <!-- header -->
+            <div style="border-bottom: solid 1px #8946a638;"
+                class="w-full flex flex-wrap items-center justify-between px-6 md:px-12 py-4 bg-fardamoonPrimary bg-opacity-20 gap-y-3 sm:gap-y-0">
+                <h2 class="flex-1 text-base lg:text-2xl text-surface">
+                    کارنامه کارمون
+                </h2>
+                <div class="w-full sm:w-fit flex flex-wrap items-center gap-3 justify-end">
+                    <!-- points -->
+                    <div class="flex items-center gap-x-0.5">
+                        <img src="assets/fardamoon/images/fardamoon-planet/coin.png" class="w-8" alt="points">
+                        <span class="text-base text-orange-400">{{ ticketDto.score }}</span>
+                    </div>
+                    <!-- poyesh -->
+                    <div class="flex items-center gap-x-1">
+                        <img src="assets/fardamoon/images/fardamoon-planet/badge.png" class="w-8" alt="points">
+                        <span class="text-sm text-orange-400">{{ ticketDto.completedCount }} پویش</span>
+                    </div>
+                </div>
+            </div>
+            <!-- content -->
+            <div class="grid grid-cols-12 justify-center items-center gap-x-3 gap-y-6 px-6 md:px-12 py-8">
+                <!-- right -->
+                <div class="col-span-12 lg:col-span-8 text-sm md:text-base lg:text-lg text-surface">
+                    <p class="">
+                        {{firstName + ' '+ lastName}}
+                        عزیز! خداقوت که تا اینجا پیش اومدی و مراحل رو به خوبی پشت سرگذاشتی 😊
+                    </p>
+                </div>
+                <!-- left -->
+                <div class="col-span-12 order-first lg:order-last lg:col-span-4 flex flex-col items-center">
+                    <div class="flex flex-col gap-y-3">
+                        <img src="assets/fardamoon/images/award.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <hr style="border: solid 1px #8946a687" class="mx-12">
+            <!-- karname1 -->
+            <div class="grid grid-cols-12 justify-center items-center gap-x-3 px-6 md:px-12 py-8 my-6">
+                <!-- part1 -->
+                <div class="col-span-12 flex flex-col gap-y-12">
+                    <h2 style="border: solid 1px #8946a687;background-color: rgba(137,70,166,0.2);"
+                        class="w-fit p-2 rounded text-sm sm:text-base md:text-lg lg:text-xl text-surface">
+                        نتیجه آزمون رغبت سنجی شغلی هالند
+                    </h2>
+                    <div class="flex flex-col gap-y-3">
+                        <h3 class="text-sm sm:text-base lg:text-lg text-slate-100">تیپ شخصیتی شما:
+                            <span class="text-surface font-sansbold"> {{hollandResult}} </span>
+                        </h3>
+                        <p class="text-sm sm:text-base lg:text-lg text-surface">
+                            {{hollandTestDescription}}
+                        </p>
+                    </div>
+                    <p class="text-sm sm:text-base lg:text-lg text-surface">
+                        امروزه کدهای هالند یکی از محبوبترین مدلهای مورداستفاده برای آزمونهای شغلی است. ازنظر هالند
+                        انتخاب حرفه تظاهری از شخصیت افراد است. در مدل هالند شش نوع تیپ شخصیتی وجود دارد و اکثر افراد
+                        به چند دسته زیر تقسیم میشوند :
+                    </p>
+                    <ol class="text-sm sm:text-base lg:text-lg text-surface">
+                        <li>1 . واقعگرا: عملی، فیزیکی، عینی، کنشی، ماشینی و ابزارگرا</li>
+                        <li>2 . جستجوگر: تحلیلی، روشنفکر، علمی، اکتشافی، متفکر</li>
+                        <li>3 . هنری: خلاق، مبتکر، مستقل، نامنظم، نوآور، رسانهای، اهل نگاشتن و نوشتن</li>
+                        <li>4 . اجتماعی: تعاونی، حمایتکننده، کمککننده، درمان / پرورش، آموزش</li>
+                        <li>5 . متهور: رقابتی، رهبری، متقاعد کردن، مقام</li>
+                        <li>6 . قراردادی: جزئی گرا، سازماندهی، دفتری</li>
+                    </ol>
+
+                </div>
+                <!-- part2 -->
+            </div>
+            <hr style="border: solid 1px #8946a687" class="mx-12">
+            <!-- karname2 -->
+            <div class="grid grid-cols-12 justify-center items-center gap-x-3 gap-y-6  px-6 md:px-12 py-8 my-6">
+                <!-- part1 -->
+                <div class="col-span-12 flex flex-col gap-y-12">
+                    <h2 style="border: solid 1px #8946a687;background-color: rgba(137,70,166,0.2);"
+                        class="w-fit p-2 rounded text-sm sm:text-base md:text-lg lg:text-xl text-surface">
+                        نتیجه آزمون MBTI
+                    </h2>
+                    <div class="flex flex-col gap-y-3">
+                        <h3 class="text-sm sm:text-base lg:text-lg text-slate-100">تیپ شخصیتی شما:
+                            <span class="text-surface font-sansbold"> {{mbtiResult}} </span>
+                        </h3>
+                        <p class="text-sm sm:text-base lg:text-lg text-surface">
+                            {{mbtiDescription}}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-span-12 flex flex-col justify-center items-center self-center"
+                    *ngIf="mbtiRadarData.data">
+                    <div class="w-full md:w-10/12 lg:w-1/2">
+                        <canvas baseChart class="chart bg-slate-50 rounded p-4" [data]="mbtiRadarData.data"
+                            [options]="mbtiRadarData.options" [type]="'radar'">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+            <hr style="border: solid 1px #8946a687" class="mx-12">
+            <!-- karname3 -->
+            <div class="grid grid-cols-12 justify-center items-center gap-x-3 gap-y-6  px-6 md:px-12 py-8 my-6">
+                <!-- part1 -->
+                <div class="col-span-12 flex flex-col gap-y-12">
+                    <h2 style="border: solid 1px #8946a687;background-color: rgba(137,70,166,0.2);"
+                        class="w-fit p-2 rounded text-sm sm:text-base md:text-lg lg:text-xl text-surface">
+                        نتیجه آزمون هوش چندگانه گاردنر
+                    </h2>
+                    <div class="flex flex-col gap-y-3">
+                        <h3 class="text-sm sm:text-base lg:text-lg text-slate-100">بالاترین هوش شما:
+                            <span class="text-surface font-sansbold"> {{gardnerResult}} </span>
+                        </h3>
+                        <p class="text-sm sm:text-base lg:text-lg text-surface">
+                            {{gardnerDescription}}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-span-12 flex flex-col justify-center items-center self-center"
+                    *ngIf="gardnerChartData.data">
+                    <div class="w-full md:w-10/12">
+                        <canvas baseChart class="chart bg-slate-50 rounded p-4" [data]="gardnerChartData.data"
+                            [options]="gardnerChartData.options" [type]="'bar'">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- planet-image -->
+    <div class=" absolute bottom-0">
+        <img src="assets/fardamoon/images/half-job-planet.png" class="w-full" />
+    </div>
+    <!-- goBack -->
+    <app-button (click)="goBack()" title="بازگشت" [icon]="'assets/icons/solar-system.png'" iconClass="w-8"
+        classes="goBack absolute top-4 left-3 z-50 text-xs flex gap-x-0.5 hover:text-white"></app-button>
+
+</section>

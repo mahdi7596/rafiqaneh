@@ -1,0 +1,69 @@
+<section class="vwhSection relative">
+    <!--  repeated stars -->
+    <app-repeated-stars></app-repeated-stars>
+
+    <audio id="player" src="assets/new-voices/fardamoon-background.mp3" autoplay></audio>
+
+    <!-- shazdeh kocholo -->
+    <img src="assets/fardamoon-event/p4.png" class=" shaazdehKocholo animate-bounce" alt="">
+
+    <!--  planets -->
+    <div *ngFor="let station of stations" class="{{
+    station.class
+  }} absolute cursor-pointer transform transition-all duration-500 hover:-translate-y-4" (click)="goto(station.link)"
+  >
+  <!-- [ngClass]="
+station.activeClass !== null && allCompleted ? '' : station.activeClass
+" -->
+
+        <div class="relative">
+            <span
+                class="absolute bg-fardamoonPrimary font-yekan rounded-full px-2 py-1.5 text-white text-base top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                {{station.planetName}}
+            </span>
+            <img (click)="goto(station.link)" [src]="
+                station.activePlanet
+                " class="cursor-pointer" />
+        </div>
+    </div>
+
+    <!-- certificate planet -->
+    <div (click)="goto('certificate')"
+        class="fardamoonPlanet absolute cursor-pointer transform transition-all duration-500 hover:-translate-y-4"
+        [ngClass]="certificateAvailable ? '' : 'inactive-station'">
+        <div class="relative">
+            <img (click)="goto('certificate')" src="assets/fardamoon-event/final-component/aim.png"
+                class="fardamoonPlanetImg cursor-pointer" />
+            <div class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                <div class="relative rounded-full p-4 bg-surface ">
+                    <p class="text-xs sm:text-base ">
+                        کارنامه نهایی
+                    </p>
+                    <div class="absolute top-0 left-1">
+                        <span class="relative flex h-3 w-3">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  stones -->
+    <!-- <app-asteroid-stone></app-asteroid-stone> -->
+
+    <!-- go gackButton -->
+    <div class="absolute left-2 top-2 w-9">
+        <img (click)="goBack()" src="assets/fardamoon-event/back-route.png" class="" alt="">
+        <div class="">
+            <button *ngIf="showAudio"  onclick="document.getElementById('player').pause()" (click)="onShow()">
+                <img src="assets/fardamoon-event/audio.png" alt="">
+            </button> 
+            <button *ngIf="!showAudio" onclick="document.getElementById('player').play()" (click)="onShow()" >
+                <img src="assets/fardamoon-event/no-audio.png" alt="">
+            </button> 
+        </div>  
+    </div>
+</section>

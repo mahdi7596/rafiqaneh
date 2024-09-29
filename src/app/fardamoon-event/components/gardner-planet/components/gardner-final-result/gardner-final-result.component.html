@@ -1,0 +1,60 @@
+<section class="vwhSection justify-center py-6 overflow-hidden">
+    <!-- repeated stars -->
+    <app-repeated-stars></app-repeated-stars>
+
+
+    <div class="container grid grid-cols-12">
+        <div style="border: solid 1px #8946a687;background-color: rgba(137,70,166,0.2);"
+            class="col-span-12 h-full bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-md z-20">
+            <!-- header -->
+            <div style="border-bottom: solid 1px #8946a638;"
+                class="w-full flex flex-wrap items-center justify-between px-6 md:px-12 py-4 bg-fardamoonPrimary bg-opacity-20 gap-y-3 sm:gap-y-0">
+                <h2 class="flex-1 text-base lg:text-2xl text-surface">
+                    نتیجه آزمون {{quizResultName}}
+                </h2>
+
+            </div>
+            <div class="grid grid-cols-12 justify-center items-center gap-x-3 px-6 md:px-12 pb-8 my-6">
+                <div class="col-span-12 flex flex-col gap-y-8 text-justify leading-loose">
+                    <img [src]="personalityTypeImage" alt="" class="rounded">
+                    <h2 style="border: solid 1px #8946a687;"
+                        class="w-fit flex items-center flex-wrap bg-fardamoonPrimary gap-x-0.5 p-2 m-auto rounded text-surface text-xs gap-y-1.5">
+                        تیپ شخصیتی شما:
+                        <span class="text-surface font-sansbold text-sm sm:text-base md:text-lg lg:text-xl">
+                            {{personalityType}}
+                        </span>
+                    </h2>
+                    <app-bar-chart *ngIf="gardnerPercentsReady" [PercentResult]="gardnerPercents"
+                        [NameResult]="gardnerNames" [chartName]="quizResultName"></app-bar-chart>
+
+                    <div class="flex flex-col gap-y-3">
+                        <h3 class="text-base lg:text-xl text-surface">
+                            ویژگی‌ها
+                            :
+                        </h3>
+                        <ol class="text-sm sm:text-base lg:text-lg text-surface leading-loose">
+                            <li *ngFor="let personalityProperty of personalityProperties">
+                                {{personalityProperty}}
+                            </li>
+                        </ol>
+                    </div>
+
+                    <button (click)="goSolarsystem()"
+                        style="border: solid 1px #8946a687;background-color: rgba(137,70,166);"
+                        class="w-fit flex items-center flex-wrap gap-x-0.5 py-2 px-3 m-auto rounded text-surface text-xs gap-y-1.5">
+                        بازگشت
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- planet-image -->
+    <div class=" absolute bottom-0 transform translate-y-10">
+        <img src="assets\fardamoon-event\garnerd-component\s3-3.png" class="w-full" />
+    </div>
+
+</section>
+
+<img (click)="goBack()" src="assets/fardamoon-event/back-route.png" class="absolute left-2 top-2 w-9 z-50" alt="">

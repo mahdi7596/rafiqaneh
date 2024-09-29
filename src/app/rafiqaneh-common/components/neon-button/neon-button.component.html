@@ -1,0 +1,47 @@
+<!-- [innerHTML]="title" -->
+<button
+  (click)="callNeonButton()"
+  [matTooltip]="tooltipContent"
+  matTooltipPosition="above"
+  [ngClass]="classes"
+  #startBtn
+>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  {{ title }}
+  <img *ngIf="icon" [src]="icon" class="w-8 mr-2" alt="" />
+</button>
+
+<!-- <button
+          #startBtn
+          matTooltip="اگر قوانین ورود به سرزمین فردامون را کامل متوجه شدی... پس بزن بریم"
+          matTooltipPosition="above"
+          (click)="startJourney()"
+          class="neonButton relative w-fit flex flex-row items-center rounded-sm py-2 px-4 text-sm text-center font-sansbold border border-fardamoonPrimary"
+          [title]="
+            isRegistered && !hasAnyAnswer
+              ? 'ad'
+              : isRegistered && hasAnyAnswer
+              ? 'edame'
+              : 'blit'
+          "
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <ng-template [ngIf]="isRegistered && !hasAnyAnswer">
+            شروع سفر
+          </ng-template>
+          <ng-template [ngIf]="isRegistered && hasAnyAnswer">
+            ادامه سفر
+          </ng-template>
+          <ng-template [ngIf]="!isRegistered"> تهیه بلیط </ng-template>
+          <img
+            src="assets/fardamoon/icons/space/play.png"
+            class="w-6 mr-2"
+            alt=""
+          />
+        </button> -->

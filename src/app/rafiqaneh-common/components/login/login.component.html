@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<section class="repeatedPattern h-screen flex flex-col justify-center items-center px-5 md:px-0">
+  <div
+    class="repeatedBg py-4 md:py-0 container mx-auto flex flex-col-reverse md:flex-row items-center justify-center border border-mainGray rounded-lg">
+    <!-- right -->
+    <div class="flex-1 flexCol items-center justify-around my-5">
+      <img src="assets/images/rafiqaneh.jpg" class="w-32 rounded-full" alt="logo" />
+      <div class="w-[90%] md:w-[80%] mt-7">
+        <!-- welcome text -->
+        <h2 class="self-start text-3xl text-newPrimary font-khodkar">
+          به رفیقانه خوش اومدی
+        </h2>
+        <!-- explain -->
+        <p class="mt-4 text-sm text-justify text-mainBlack leading-6">
+          برای اینکه بتونی از همه ی خدمات سایت
+          <span class="text-newPrimary exbold-yekan"> رفیقانه </span>
+          استفاده کنی لازمه ثبت نام کنی...
+          لطفا شماره همراه خودتو وارد کن
+        </p>
+        <!-- mobile number field -->
+        <input type="tel" [(ngModel)]="mobileNumber" (keyup.enter)="submit()"
+          class="w-full mt-7 p-2 text-xs sm:text-sm border  border-newPrimary rounded focus:outline-newPrimary"
+          placeholder="شماره موبایل: 09123456789 " />
+        <!-- continue -->
+        <button [disabled]="!canResend" (click)="submit()"
+          class="w-full mt-5 p-3 bg-newPrimary  hover:bg-white text-white text-sm hover:text-newPrimary border hover:border-newPrimary font-sansbold transition duration-300 ease-out rounded">
+          ادامه {{ timeToResend > 0 ? "(" + timeToResend + " ثانیه)" : "" }}
+        </button>
+      </div>
+    </div>
+    <!-- left -->
+    <div class="hidden md:flex flex-1 flex-col items-center justify-center rounded md:rounded-tl-lg md:rounded-tb-lg">
+      <!-- image -->
+      <img src="assets/images/rafiqaneh.jpg" class="rounded md:rounded-tl-lg md:rounded-bl-lg w-72 md:w-full" alt="" />
+    </div>
+  </div>
+  <div class="text-xs">نسخه: {{appVersion}}</div>
+</section>

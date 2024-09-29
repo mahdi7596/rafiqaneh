@@ -1,0 +1,59 @@
+@import "../../../../../styles";
+
+.astro-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 15%;
+  animation-name: astro2;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes astro2 {
+  0% {
+    top: 15%;
+  }
+
+  50% {
+    top: 10%;
+  }
+
+  100% {
+    top: 15%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.hintCard {
+  border: solid 3px $fardamoonPrimary;
+  opacity: 0;
+  animation: fade 1.2s ease-out 1.2s forwards;
+}
+
+
+
+.upward-arrow {
+  position: absolute;
+  top: -31px;
+  width: 33px;
+  left: 50%;
+}
+
+.right-arrow {
+  position: absolute;
+  width: 20px;
+  top: 50%;
+  right: -33px;
+}

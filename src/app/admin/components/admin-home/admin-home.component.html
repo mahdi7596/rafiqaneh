@@ -1,0 +1,23 @@
+<mat-toolbar class="mat-elevation-z3 flex justify-between" color="primary">
+  <div class="flex">
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()" >menu</mat-icon>
+    </button>
+    <h1>رفیقانه</h1>
+  </div>
+  <a [routerLink]="'/'"><img src="assets\fardamoon-event\home-white.png" class="p-2 size-12"></a>
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [style.width]="'250px'" class="bg-blue-50 flex flex-col justify-end">
+
+  <app-custom-sidenav></app-custom-sidenav>
+
+  </mat-sidenav>
+  <mat-sidenav-content class="content bg-blue-100">
+    <div style="height: 88vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

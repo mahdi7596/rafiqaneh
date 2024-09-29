@@ -1,0 +1,44 @@
+<section class="vwhSection justify-center py-6 overflow-hidden">
+    
+    <!-- repeated stars -->
+    <app-repeated-stars></app-repeated-stars>
+    <!-- questionBox && wooden board -->
+    
+    <div class="bg-white flex items-center  px-3 py-1.5 rounded my-8">
+        <img src="assets/fardamoon-event/info.png" class="w-12" alt="">
+        {{explanation}}
+    </div>
+    <div class="timeline relative max-w-[1200px] mt-10 mb-28 lg:mb-60 md:m-16" style="z-index: 1;">
+        <div *ngFor="let mission of missions; let index = index"
+            [ngClass]="0 === index % 2 ? 'left-timelineholder':'right-timelineholder right-1/2'"
+            class=" timelineholder w-1/2 relative py-2.5 px-[50px] opacity-0">
+            <img [src]="mission.formName == 'certificate' ? 'assets/fardamoon/images/certificate.png' : mission.status == 'passed' ?'assets/fardamoon/images/checked.png' : mission.status == 'locked' ? 'assets/fardamoon/images/locked.png' : 'assets/fardamoon/images/unlock.png'"
+                alt="number" class="absolute w-10 -left-5 top-8 z-10">
+            <div class="relative flex flex-col bg-surface p-4 rounded min-w-fit">
+                <h2 class="text-base text-darkBlack">{{mission.title}}</h2>
+                <p *ngIf="mission.content"
+                    class="self-end text-sm mt-2 bg-newPrimary rounded-full border border-newPrimary w-fit text-white px-1.5 py-1">
+                    نتیجه:
+                    <span class="font-blackYekan">
+
+                        {{mission.content + '%'}}
+                    </span>
+                </p>
+                <span [ngClass]="0 === index % 2 ? 'left-container-arrow':'right-container-arrow'"
+                    class="h-0 w-0 absolute top-7 z-10 "></span>
+                <button *ngIf="mission.status != 'passed'" [routerLink]="mission.link"
+                    [disabled]="mission.status != 'unlocked'"
+                    class="bg-fardamoonPrimary hover:bg-opacity-95 py-2 px-6 text-surface rounded-sm mt-3 self-end disabled:opacity-25">
+                    {{mission.buttonTitle ? mission.buttonTitle : 'شروع مرحله'}}</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- planet-image -->
+    <div [class]="planetClass">
+        <img [src]="planetImage" class="w-full relative" />
+        <img [src]="shazdeImage" alt="" [class]="shazdeClass" class="shazde-animate-bounce shazde-animate">
+
+    </div>
+
+</section>

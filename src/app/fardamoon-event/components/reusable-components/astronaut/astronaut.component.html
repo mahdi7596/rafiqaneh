@@ -1,0 +1,24 @@
+<div class="astro-2 z-40">
+  <div class="relative">
+    <img src="assets/images/astronauts.png" class="w-40" />
+    <div class="hintCard w-56 p-2 bg-white rounded-sm">
+      <div class="relative">
+        <p class="text-sm text-justify">
+          {{ content }}
+          <ng-template [ngIf]="activeContent">
+            <span class="text-fardamoonPrimary font-sansbold">
+              {{ activeContent }}
+            </span>
+          </ng-template>
+          <ng-template [ngIf]="restOfContent">
+            <span>
+              {{ restOfContent }}
+            </span>
+          </ng-template>
+        </p>
+        <img src="assets/icons/upward-arrow.png" class="upward-arrow" alt="upward-arrow" />
+        <img src="assets/icons/right-arrow.png" class="right-arrow hidden" alt="right-arrow" />
+      </div>
+    </div>
+  </div>
+</div>

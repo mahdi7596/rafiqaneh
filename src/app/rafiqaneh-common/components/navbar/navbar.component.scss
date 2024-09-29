@@ -1,0 +1,20 @@
+@media screen and (max-width: 415px) {
+  .logo {
+    width: 54px;
+  }
+
+  .left-header {
+    column-gap: 10px;
+  }
+
+  .socialLinks-icons {
+    width: 24px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .left-header {
+    justify-content: flex-end;
+    width: 100%;
+  }
+}

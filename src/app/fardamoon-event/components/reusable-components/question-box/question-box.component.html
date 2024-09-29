@@ -1,0 +1,18 @@
+<textarea [(ngModel)]="currentAns" placeholder="پاسخ سوال را اینجا باید بنویسی"
+  class="fardamoonTextArea w-full h-28" name="questionAnswer"></textarea>
+<!--  submit button -->
+<button (click)="callSubmit()" class="submitFardamoonForm">
+  ثبت پاسخ
+</button>
+<!--  hint -->
+<div class="flex items-center gap-x-1">
+  <img src="assets/fardamoon/images/info2.png" class="w-8" alt="info">
+  <p class="text-white text-xs text-justify">
+    {{ content }}
+  </p>
+</div>
+<!--  voice -->
+<button (click)="callToggle()" class="playPauseSound">
+  پخش صوت راهنما
+  <img [src]="icon" class="w-4 mr-0.5" />
+</button>

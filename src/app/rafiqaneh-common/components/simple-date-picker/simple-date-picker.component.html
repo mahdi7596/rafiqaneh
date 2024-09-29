@@ -1,0 +1,18 @@
+<div class="grid grid-cols-12 gap-3">
+    <select [(ngModel)]="selectedDate.year" (ngModelChange)="yearChanged($event)"
+        class="col-span-4 bg-gray-100 py-1.5 px-2 text-xs sm:text-sm text-surfaceText border border-surfaceBorder rounded-sm"
+        name="year">
+        <option *ngFor="let year of years" [ngValue]="year.value">{{year.text}}</option>
+    </select>
+    <select [(ngModel)]="selectedDate.month" (ngModelChange)="monthChanged($event)"
+        class="col-span-4 bg-gray-100 py-1.5 px-2 text-xs sm:text-sm text-surfaceText border border-surfaceBorder rounded-sm"
+        name="month">
+        <option *ngFor="let month of months" [ngValue]="month.value">{{month.text}}</option>
+    </select>
+
+    <select [(ngModel)]="selectedDate.day" (ngModelChange)="dayChanged($event)"
+        class="col-span-4 bg-gray-100 py-1.5 px-2 text-xs sm:text-sm text-surfaceText border border-surfaceBorder rounded-sm"
+        name="day">
+        <option *ngFor="let day of days" [ngValue]="day.value">{{day.text}}</option>
+    </select>
+</div>

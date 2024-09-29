@@ -1,0 +1,21 @@
+<div class="flex-col justify-between">
+    <div class="sidenav-header text-center pt-6">
+        <img height="100" width="100" class="bg-blue-600 rounded-full m-auto mb-4" src="assets\images\rafiqaneh.jpg">
+        <div class="header-text">
+            <p class="text-lg font-black">پنل ادمین رفیقانه</p>
+        </div>
+
+        <mat-nav-list class="mt-5">
+            <div mat-list-item *ngFor="let item of menuItems" class="px-5 mb-4">
+                <a [routerLink]="item.route" class="flex items-center gap-4 text-base font-semibold">
+                    <img [src]="item.icon" class="size-8">
+                   <p>{{item.lable}}</p> 
+                </a>
+            </div>
+        </mat-nav-list>
+    </div>
+    <a [routerLink]="'/'" class="px-5 mt-8 gap-2 flex items-center">
+        <img src="assets/fardamoon-event/home (1).png" class="size-8">
+        <p class="font-semibold">بازگشت به صفحه اصلی</p>
+    </a>
+</div>

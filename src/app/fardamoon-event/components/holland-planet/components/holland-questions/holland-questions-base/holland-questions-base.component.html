@@ -1,0 +1,24 @@
+<section *ngIf="!formAnswerCompleted" class="vwhSection justify-center py-6 overflow-hidden">
+    <!-- repeated stars -->
+    <app-repeated-stars></app-repeated-stars>
+    <!-- questionBox && wooden board -->
+
+
+    <div
+        class="container questionCard z-50 relative grid grid-cols-12 justify-center items-center gap-x-6 gap-y-6 px-3 sm:px-6 md:px-12 py-8">
+
+        <div  class="col-span-12 flex flex-col">
+            <h2 class="text-white mb-5 text-sm">از بین فعالیت های زیر به هر کدام چقدر علاقه داری؟</h2>
+            <multi-step-form-builder (stepsCompleted)="stepsCompleted($event)" [multiStepForm]="questionsForm" (formValuesLoaded)="formValuesLoaded($event)"></multi-step-form-builder>
+        </div>
+        
+    </div>
+
+    <!-- planet-image -->
+    <div class="absolute bottom-0 transform translate-y-24">
+        <img src="assets\fardamoon-event\holland-component\s1-2.png" class="w-full" />
+    </div>
+
+</section>
+
+<app-holland-percent-result *ngIf="formAnswerCompleted" [percentResult]="percentResult"></app-holland-percent-result>

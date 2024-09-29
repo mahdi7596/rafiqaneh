@@ -1,0 +1,53 @@
+<section class="vwhSection justify-center">
+    <audio id="player" src="assets/new-voices/space.mp3" autoplay></audio>
+    <div class="z-50 absolute top-2 left-2">
+        <button class="w-9 cursor-pointer" *ngIf="showAudio" onclick="document.getElementById('player').pause()" (click)="onShow()">
+            <img src="assets/fardamoon-event/audio.png" alt="">
+        </button>
+        <button class="w-9 cursor-pointer" *ngIf="!showAudio" onclick="document.getElementById('player').play()"
+            (click)="onShow()">
+            <img src="assets/fardamoon-event/no-audio.png" alt="">
+        </button>
+    </div>
+
+    <!-- repeated stars -->
+    <app-repeated-stars></app-repeated-stars>
+    <!-- adamaak -->
+    <!-- <app-astronaut [content]="hintCardContent" activeContent="{{firstName}}"
+        [restOfContent]="hintCardRestOfContent"></app-astronaut> -->
+    <!--homePage -->
+    <button (click)="goBack()" class="p-1.5 z-50 absolute right-0 top-0 cursor-pointer">
+        <img src="assets/images/rafiqaneh.jpg" class="rounded-full w-16 h-16" />
+    </button>
+    
+    <!-- rocekt -->
+    <img src="assets/fardamoon-event/p4.png" [style.transform]="
+    'rotate(' + (spaceCraftRotation ? spaceCraftRotation : 0) + 'deg)'
+  " [style.top.px]="spaceCraftPos[1]" [style.left.px]="spaceCraftPos[0]"
+        [ngClass]="spaceCraftMoveComplete ? 'apply-wiggle' : ''"
+        class="w-80 ml-16 mt-10 sm:w-60 sm:ml-40 lg:w-72 spacecraft rocket" alt="rocket" />
+    <!--  planets -->
+    <app-planet></app-planet>
+    <!--  stones -->
+    <app-asteroid-stone></app-asteroid-stone>
+    <!-- content -->
+    <div class="container z-30 customMid:mt-24">
+        <div class="grid grid-cols-12 gap-y-5 customMid:gap-y-0">
+            <div class="questionCard col-span-12 customMid:col-span-8 justify-center">
+
+                <app-title classes="text-white text-justify text-base font-bold  md:text-base lg:text-xl"
+                    [title]="sloganContent"></app-title>
+                <!-- title -->
+                <app-title classes="text-white text-justify font-bold text-sm md:text-base lg:text-xl"
+                    [title]="titleContent"></app-title>
+                <div class="flex flex-wrap items-center justify-end gap-3">
+
+                    <!-- tooltipContent="اگه آماده ورود به سرزمین فردامونی پس بزن بریم!" -->
+                    <app-neon-button (neonBtn)="startJourney()" #startBtn title=" بزن بریم" tooltipContent=""
+                        [icon]="'assets/fardamoon-event/mission-rocket.png'"
+                        classes="neonButton relative w-fit flex flex-row items-center rounded-sm py-2 px-4 font-bold text-sm text-center font-sansbold border border-fardamoonPrimary"></app-neon-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

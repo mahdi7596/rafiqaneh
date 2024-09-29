@@ -1,0 +1,121 @@
+<mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="bg-blue-50">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <button mat-raised-button color="primary">جست و جو</button>
+          <!-- <button (click)="downloadCsv($event)" mat-raised-button color="primary">دانلود فایل CSV</button> -->
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field appearance="legacy">
+        <mat-label>شماره موبایل</mat-label>
+        <input matInput placeholder="09........" [(ngModel)]="filter.mobileNumber">
+      </mat-form-field>
+  
+      <mat-form-field appearance="legacy">
+        <mat-label>کد ملی</mat-label>
+        <input matInput [(ngModel)]="filter.nationalCode">
+      </mat-form-field>
+  
+      <mat-form-field appearance="legacy">
+        <mat-label>نام</mat-label>
+        <input matInput [(ngModel)]="filter.name">
+      </mat-form-field>
+  
+      <mat-form-field appearance="legacy">
+        <mat-label>استان</mat-label>
+        <mat-select (selectionChange)="provinceChanged($event)">
+          <mat-option *ngFor="let p of provinces" [value]="p.code">{{p.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field appearance="legacy">
+        <mat-label>سن (کمتر مساوی)</mat-label>
+        <input matInput [(ngModel)]="filter.age" title="سن کمتر مساوی عبارت وارد شده">
+      </mat-form-field>
+  
+      <mat-slide-toggle [(ngModel)]="filter.isSelected">لیست منتخب</mat-slide-toggle>
+      
+      <button (click)="filterClicked()" mat-raised-button color="primary">جست و جو</button>
+      <button (click)="clearFilter()" mat-raised-button>حذف فیلترها</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="mat-elevation-z8" dir="rtl">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="id"> شناسه </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> نام </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> نام خانوادگی </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="mobileNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="mobileNumber"> شماره موبایل </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobileNumber}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="score">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="score"> امتیاز </th>
+        <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="createdAt"> تاریخ ثبت نام </th>
+        <td mat-cell *matCellDef="let element"> {{formatDate(element.createdAt)}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="province">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="province"> استان </th>
+        <td mat-cell *matCellDef="let element"> {{province(element.province)}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="age"> سن </th>
+        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+      </ng-container>
+      <!-- <ng-container matColumnDef="isSelected">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="isSelected"> منتخب </th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="toggleUserSelected(element.fardamoon)" >
+            <svg [ngClass]="element.fardamoon.isSelected?'text-yellow-400':'text-gray-300'" class="w-5 h-5" fill="currentColor"
+              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+          </button>
+        </td>
+      </ng-container> -->
+  
+  
+      <ng-container matColumnDef="operations">
+        <th mat-header-cell *matHeaderCellDef> عملیات </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- <button (click)="viewUserDetails(element)" mat-raised-button color="primary">جزییات کاربر</button> -->
+          <!-- <button (click)="viewTicketDetails(element)" mat-raised-button color="primary">بلیط</button> -->
+          <button [routerLink]="['/admin-area/karmoon-user-details', element.id]" mat-raised-button color="primary">نتایج کارمون</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" dir="rtl" [length]="totalCount" [pageSize]="take"
+      (page)="pageChanged($event)" [pageIndex]="pageIndex" showFirstLastButtons
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>

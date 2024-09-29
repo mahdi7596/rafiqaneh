@@ -1,0 +1,9 @@
+.profile-image {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.mat-card-imgage {
+  width: inherit;
+}
+/*# sourceMappingURL=user-details.component.css.map */
