@@ -1,6 +1,23 @@
-# NewFriendshipSeason
+# **Rafiqaneh: Kids Personality & Career Explorer**  
+*(An Angular-Based Platform for Young Minds Aged 6–16)*  
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+### 🌟 **Description**  
+A dynamic web application designed to help children and teens:  
+- **Discover their personality traits** through interactive quizzes.  
+- **Explore future career suggestions** based on their answers.  
+- **Receive personalized recommendations** for hobbies and interests.  
+
+**Goal:** Empower young users to understand themselves better and explore potential future paths in a fun, engaging way.  
+
+---
+
+### 🛠️ **Technologies Used**  
+
+#### **Frontend**  
+![Angular](https://img.shields.io/badge/-Angular-DD0031?logo=angular&logoColor=white)  
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)  
+![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white) *(or your CSS framework)*  
+
 
 ## Development server
 
